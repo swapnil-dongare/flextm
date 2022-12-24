@@ -26,8 +26,8 @@ class StoreSPRequest extends FormRequest
         return [
             "name" => ['required'],
             "mobile" => ['required'],
-            "email" => ['required', 'unique:users,email,except,id,deleted_at,NULL'],
-            "vat_id" => ['nullable' ,'integer'],
+            "email" => ['required', 'email','unique:users,email,except,id,deleted_at,NULL'],
+            "vat_id" => ['nullable' ,'regex:/^[ 0-9-]*$/'],
             "address" => ['nullable'],
             "invoice_address" => ['nullable'],
             "country" => ['nullable'],

@@ -1,13 +1,13 @@
 @extends('layouts.admin-dashboard')
 @section('title')
-    Admin : Add Organization
+    Admin : Add Customer
 @endsection
 @section('sidebar-organization')
     active
 @endsection
 
 @section('main-content')
-    <h1>Add Organization</h1>
+    <h1>Add Customer </h1>
     <div class="container">
 
         <div class="row">
@@ -23,7 +23,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label class="form-label">Name</label>
-                                        <input type="text" name="name"
+                                        <input type="text" name="name" value="{{old('name')}}"
                                             class="form-control @error('name') is-invalid @enderror" placeholder="Name">
                                         @error('name')
                                             <span class="invalid-feedback" role="alert">
@@ -37,7 +37,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="form-label">E-mail</label>
-                                        <input type="text" name="email"
+                                        <input type="text" name="email" value="{{old('email')}}"
                                             class="form-control @error('email') is-invalid @enderror" placeholder="E-mail">
                                         @error('email')
                                             <span class="invalid-feedback" role="alert">
@@ -50,7 +50,7 @@
                                     <div class="form-group">
                                         <label class="form-label">Contact Number</label>
                                         <input type="text" name="mobile"
-                                            class="form-control @error('mobile') is-invalid @enderror" placeholder="Phone">
+                                            class="form-control @error('mobile') is-invalid @enderror" placeholder="Phone" value="{{old('mobile')}}">
                                         @error('mobile')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -63,7 +63,7 @@
                             <hr class="my-15">
                             <div class="form-group">
                                 <label class="form-label">Country</label>
-                                <input type="text" name="country"
+                                <input type="text" name="country" value="{{old('country')}}"
                                     class="form-control @error('country') is-invalid @enderror" placeholder="Country Name">
                                 @error('country')
                                     <span class="invalid-feedback" role="alert">
@@ -74,12 +74,12 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label class="form-label">Language</label>
+                                        <label class="form-label">Language </label>
                                         <select class="form-control select2  @error('language_id') is-invalid @enderror"
                                             name="language_id" style="width: 100%;">
                                             @if ($language)
                                                 @foreach ($language as $item)
-                                                    <option value={{ $item->id }}>{{ $item->name }}</option>
+                                                    <option value={{ $item->id }} {{old('language_id') == $item->id ? 'selected' : ''}}>{{ $item->name }}</option>
                                                 @endforeach
                                             @else
                                                 <option value="">NO Language found</option>
@@ -95,7 +95,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="form-label">VAT-ID</label>
-                                        <input type="text" name="vat_id"
+                                        <input type="text" name="vat_id" value="{{old('vat_id')}}"
                                             class="form-control @error('vat_id') is-invalid @enderror" placeholder="VAT-ID">
                                         @error('vat_id')
                                             <span class="invalid-feedback" role="alert">
@@ -110,7 +110,7 @@
                                     <div class="form-group">
                                         <label class="form-label">Address</label>
                                         <textarea rows="5" name="company_address" class="form-control @error('company_address') is-invalid @enderror"
-                                            placeholder=" Address"></textarea>
+                                            placeholder=" Address">{{old('company_address')}}</textarea>
                                         @error('company_address')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -122,7 +122,7 @@
                                     <div class="form-group">
                                         <label class="form-label">Invocing Address</label>
                                         <textarea rows="5" name="invoice_address" class="form-control @error('invoice_address') is-invalid @enderror"
-                                            placeholder="Invocing Address"></textarea>
+                                       placeholder="Invocing Address">{{old('invoice_address')}}</textarea>
                                         @error('invoice_address')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -134,7 +134,7 @@
                             <div class="form-group">
 
                                 <div class="col-md-6">
-                                    <input type="checkbox" id="md_checkbox_4"
+                                    <input type="checkbox" id="md_checkbox_4"  {{old('free_trial') == 'on' ? 'checked' : ''}}
                                         class="chk-col-info @error('free_trial') is-invalid @enderror" name="free_trial" />
                                     <label for="md_checkbox_4">Free Trial</label>
                                     @error('free_trial')
@@ -144,7 +144,7 @@
                                     @enderror
                                 </div>
                                 <div class="col-md-6">
-                                    <input type="checkbox" id="md_checkbox_3"
+                                    <input type="checkbox" id="md_checkbox_3" {{old('subscription') == 'on' ? 'checked' : ''}}
                                         class="chk-col-success @error('subscription') is-invalid @enderror"
                                         name="subscription" />
                                     <label for="md_checkbox_3">Subscription</label>

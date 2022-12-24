@@ -21,7 +21,7 @@ class CreateCustomersTable extends Migration
             $table->string('email')->nullable();
             $table->string('company_name')->nullable();
             $table->bigInteger('company_phone')->nullable();
-            $table->bigInteger('vat_id')->nullable();
+            $table->string('vat_id')->nullable();
             $table->text('company_address')->nullable();
             $table->boolean('newsletter')->default(false);
             $table->boolean('marketing_permission')->default(false);

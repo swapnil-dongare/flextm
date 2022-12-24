@@ -105,8 +105,8 @@
                 <h6 class="box-subtitle">Export data to Copy, CSV, Excel, PDF & Print
                 </h6>
                 @can('create-order-request')
-                    <a href="{{ route('order-request.create') }}" class="btn btn-info" style="float:right;">Create Order
-                        Provider
+                    <a href="{{ route('order-request.create') }}" class="btn btn-info" style="float:right;">Create New Order
+
                         <i class="fa fa-user-plus" aria-hidden="true"></i></a>
                 @endcan
 
@@ -128,7 +128,7 @@
                                 <th scope="col">End Date</th>
                                 <th scope="col">End Time</th>
                                 <th scope="col">Present in Service Hall</th>
-                                <th scope="col">Head Count</th>
+                                <th scope="col">Amount of passangers</th>
                                 <th scope="col">Mobility Restrictions</th>
                                 <th scope="col">Price</th>
                                 <th scope="col">Tax Rate</th>

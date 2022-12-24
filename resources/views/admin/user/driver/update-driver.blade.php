@@ -65,7 +65,7 @@
                             </div>
                             <h4 class="box-title text-info mb-0 mt-20"><i class="ti-save me-15"></i> Requirements</h4>
                             <hr class="my-15">
-                            <div class="form-group">
+                            {{-- <div class="form-group">
                                 <label class="form-label">Directives</label>
                                 <input type="text" name="directive"
                                     class="form-control @error('directive') is-invalid @enderror" placeholder="Directives"
@@ -75,7 +75,7 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
-                            </div>
+                            </div> --}}
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
@@ -88,6 +88,27 @@
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                         @enderror
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group" style="display: flex;margin-top:30px">
+                                        <label class="form-label " style="width: 100px">Valid until:</label>
+
+                                        <div class="input-group date">
+                                            <div class="input-group-addon">
+                                                <i class="fa fa-calendar"></i>
+                                            </div>
+                                            <input type="text" name="valid_until" class="form-control pull-right"
+                                            data-date-format="yyyy-mm-dd" id="datepicker"
+                                            value="{{ $driver->valid_until }}">
+                                        @error('valid_until')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                        </div>
+                                        <!-- /.input group -->
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -125,30 +146,27 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="form-group" style="display: flex;margin-top:30px">
-                                        <label class="form-label " style="width: 100px">Valid until:</label>
-
-                                        <div class="input-group date">
-                                            <div class="input-group-addon">
-                                                <i class="fa fa-calendar"></i>
-                                            </div>
-                                            <input type="text" name="valid_until" class="form-control pull-right"
-                                            data-date-format="yyyy-mm-dd" id="datepicker"
-                                            value="{{ $driver->valid_until }}">
-                                        @error('valid_until')
+                                    <div class="form-group">
+                                        <label class="form-label">Location</label>
+                                        <select class="form-control select2  @error('location') is-invalid @enderror"
+                                            name="location" style="width: 100%;">
+                                            <option value="Lahti" {{$driver->location == 'Lahti' ? 'selected' :''}}>Lahti</option>
+                                            <option value="Levi" {{$driver->location == 'Levi' ? 'selected' :''}}>Levi</option>
+                                            <option value="Rovaniemi" {{$driver->location == 'Rovaniemi' ? 'selected' :''}}>Rovaniemi</option>
+                                            <option value="Helsinki" {{$driver->location == 'Helsinki' ? 'selected' :''}}>Helsinki</option>
+                                        </select>
+                                        @error('location')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                         @enderror
-                                        </div>
-                                        <!-- /.input group -->
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="form-label">Address</label>
                                 <textarea rows="5" name="address" class="form-control @error('address') is-invalid @enderror"
-                                    placeholder="Company Address" value="{{ $driver->address }}"></textarea>
+                                    placeholder="Company Address" >{{ $driver->address }}</textarea>
                                 @error('address')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

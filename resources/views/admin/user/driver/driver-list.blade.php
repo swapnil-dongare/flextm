@@ -29,7 +29,7 @@
                                         <th scope="col">Name</th>
                                         <th scope="col">Mobile</th>
                                         <th scope="col">Email</th>
-                                        <th scope="col">Liscense</th>
+                                        <th scope="col">Licenses</th>
                                         <th scope="col">Valid</th>
                                         <th scope="col">Social Sec. No.</th>
                                         <th scope="col"></th>

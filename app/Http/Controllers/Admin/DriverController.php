@@ -77,10 +77,11 @@ class DriverController extends Controller
                 "mobile" => $request->mobile,
                 "address" => $request->address,
                 "liscense_no" => $request->liscense_no,
-                "directive" => $request->directive,
+               // "directive" => $request->directive,
                 "valid_until" => $request->valid_until,
                 "social_security_no" => $request->social_security_no,
                 "language_id" => $request->language_id,
+                "location" => $request->location,
                 "profile_url" => $url,
                 "expired" => $request->expired == "on" ? true : false
             ]);
@@ -132,8 +133,9 @@ class DriverController extends Controller
     {
         try {
             $driver = Driver::find($id);
+            $lang = Language::all();
             if ($driver) {
-                return view('admin.user.driver.update-driver', ['driver' => $driver]);
+                return view('admin.user.driver.update-driver', ['driver' => $driver,'language'=>$lang]);
             }
             return redirect()->route('get-user-customer')->with("full-top-error", 'Customer not found!');
         } catch (\Throwable $th) {
@@ -168,19 +170,21 @@ class DriverController extends Controller
             $driver->email = $request->email;
             $driver->address = $request->address;
             $driver->liscense_no = $request->liscense_no;
-            $driver->directive = $request->directive;
+           // $driver->directive = $request->directive;
             $driver->valid_until = $request->valid_until;
             $driver->social_security_no = $request->social_security_no;
-            $driver->language = $request->language;
+            $driver->language_id = $request->language_id;
+            $driver->location = $request->location;
             $driver->profile_url = $url != null ? $url : $driver->profile_url;
-            $driver->language =  $request->expired == "on" ? true : false;
+            $driver->expired =  $request->expired == "on" ? true : false;
             $driver->update();
             return redirect()->route('driver.index')->with("full-top-success", 'Driver updated successfully!');
         } catch (\Throwable $th) {
+            throw $th;
             if ($flag) {
                 Storage::delete($url);
             }
-            return redirect()->route('driver.index')->with("full-top-error", "Internal server error");
+            return redirect()->route('driver.index')->with("full-top-error", "Internal server error".$th->getMessage());
         }
     }
 

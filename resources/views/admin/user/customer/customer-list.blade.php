@@ -7,7 +7,7 @@
 @endsection
 
 @section('main-content')
-    <h1>Manage Customers"</h1>
+    <h1>Manage Customers</h1>
     <div class="container">
         <div class="row">
             <div class="col-12 col-lg-12">

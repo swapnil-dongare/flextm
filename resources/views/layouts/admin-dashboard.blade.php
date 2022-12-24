@@ -276,7 +276,7 @@
                                                         <span class="path1"></span>
                                                         <span class="path2"></span>
                                                     </i>
-                                                    x
+                                                    Customer management
                                                 </a>
                                             </li>
                                         @endcan

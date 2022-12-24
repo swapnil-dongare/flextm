@@ -21,9 +21,9 @@ class CreateDriversTable extends Migration
             $table->string('email')->nullable();
             $table->text('address')->nullable();
             $table->string('liscense_no')->nullable();
-            $table->string('directive')->nullable();
+           // $table->string('directive')->nullable();
             $table->date('valid_until')->nullable();
-            $table->bigInteger('social_security_no')->nullable();
+            $table->string('social_security_no')->nullable();
             $table->string('language_id')->nullable()->references('id')->on('languages')->onDelete('cascade')->onUpdate('cascade');
             $table->string('profile_url')->nullable();
             $table->boolean('expired')->default(false);

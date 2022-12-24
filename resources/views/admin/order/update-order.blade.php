@@ -267,12 +267,30 @@
                                         @enderror
                                     </div>
                                 </div>
-                                <div class="col-12">
+                                {{-- <div class="col-12">
                                     <div class="form-group">
                                         <label class="form-label">Tax Rate</label>
                                         <input type="text" name="tax_rate"
                                             class="form-control @error('tax_rate') is-invalid @enderror"
                                             placeholder="Tax Rate">
+                                        @error('tax_rate')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div> --}}
+                                <div class="col-md-6">
+
+                                    <div class="form-group">
+                                        <label class="form-label">Tax rate</label>
+                                        <select name="tax_rate"
+                                            class="form-control select2  @error('tax_rate') is-invalid @enderror"
+                                            style="width: 100%;">
+                                            <option value="0" {{old('tax_rate') == '0' ? 'selected' : ''}}>0%</option>
+                                            <option value="10" {{old('tax_rate') == '10' ? 'selected' : ''}}>10%</option>
+                                            <option value="20" {{old('tax_rate') == '20' ? 'selected' : ''}}>20%</option>
+                                        </select>
                                         @error('tax_rate')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>

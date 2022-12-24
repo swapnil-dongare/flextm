@@ -1,13 +1,13 @@
 @extends('layouts.admin-dashboard')
 @section('title')
-    Admin : Organization
+    Admin : Customer
 @endsection
 @section('sidebar-organization')
     active
 @endsection
 
 @section('main-content')
-    <h1>Organization</h1>
+    <h1>Customer</h1>
     <div class="container">
         {{-- <div class="row">
             <div class="col-12 col-lg-12">
@@ -101,11 +101,11 @@
 
         <div class="box">
             <div class="box-header with-border">
-                <h3 class="box-title">Organization List</h3>
+                <h3 class="box-title">Customer List</h3>
                 <h6 class="box-subtitle">Export data to Copy, CSV, Excel, PDF & Print
                 </h6>
                 @can('create-sp')
-                    <a href="{{ route('organization.create') }}" class="btn btn-info" style="float:right;">Add Organization
+                    <a href="{{ route('organization.create') }}" class="btn btn-info" style="float:right;">Add Customer
                         <i class="fa fa-user-plus" aria-hidden="true"></i></a>
                 @endcan
 

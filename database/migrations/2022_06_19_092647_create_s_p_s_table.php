@@ -19,7 +19,7 @@ class CreateSPSTable extends Migration
             $table->string('name');
             $table->bigInteger("mobile");
             $table->string('email')->nullable();
-            $table->bigInteger('vat_id')->nullable();
+            $table->string('vat_id')->nullable();
             $table->text('address')->nullable();
             $table->text('invoice_address')->nullable();
             $table->string('country')->nullable();

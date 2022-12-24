@@ -29,10 +29,11 @@ class StoreDriverRequest extends FormRequest
             "mobile" => ['required'],
             "address" => ['nullable'],
             "liscense_no" => ['nullable'],
-            "directive" => ['nullable'],
+            //"directive" => ['nullable'],
             "valid_until" => ['nullable'],
             "social_security_no" => ['nullable'],
             "language" => ['nullable'],
+            "location" => ['nullable'],
             "profile_url" => ['nullable'],
             "expired" => ['nullable'],
         ];

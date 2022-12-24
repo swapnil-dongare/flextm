@@ -22,7 +22,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label class="form-label">Name</label>
-                                        <input type="text" name="name"
+                                        <input type="text" name="name" value="{{old('name')}}"
                                             class="form-control @error('name') is-invalid @enderror" placeholder="Name">
                                         @error('name')
                                             <span class="invalid-feedback" role="alert">
@@ -36,7 +36,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="form-label">E-mail</label>
-                                        <input type="text" name="email"
+                                        <input type="text" name="email" value="{{old('email')}}"
                                             class="form-control @error('email') is-invalid @enderror" placeholder="E-mail">
                                         @error('email')
                                             <span class="invalid-feedback" role="alert">
@@ -48,7 +48,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="form-label">Contact Number</label>
-                                        <input type="text" name="mobile"
+                                        <input type="text" name="mobile" value="{{old('mobile')}}"
                                             class="form-control @error('mobile') is-invalid @enderror" placeholder="Phone">
                                         @error('mobile')
                                             <span class="invalid-feedback" role="alert">
@@ -62,7 +62,7 @@
                             <hr class="my-15">
                             <div class="form-group">
                                 <label class="form-label">Company</label>
-                                <input type="text" name="company_name"
+                                <input type="text" name="company_name" value="{{old('company_name')}}"
                                     class="form-control @error('company_name') is-invalid @enderror"
                                     placeholder="Company Name">
                                 @error('company_name')
@@ -75,7 +75,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="form-label">Company Contact Number</label>
-                                        <input type="text" name="company_phone"
+                                        <input type="text" name="company_phone" value="{{old('company_phone')}}"
                                             class="form-control @error('company_phone') is-invalid @enderror"
                                             placeholder="Contact Number">
                                         @error('company_phone')
@@ -88,7 +88,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="form-label">VAT-ID</label>
-                                        <input type="text" name="vat_id"
+                                        <input type="text" name="vat_id" value="{{old('vat_id')}}"
                                             class="form-control @error('vat_id') is-invalid @enderror" placeholder="VAT-ID">
                                         @error('vat_id')
                                             <span class="invalid-feedback" role="alert">
@@ -101,7 +101,7 @@
                             <div class="form-group">
                                 <label class="form-label">Address</label>
                                 <textarea rows="5" name="company_address" class="form-control @error('company_address') is-invalid @enderror"
-                                    placeholder="Company Address"></textarea>
+                                    placeholder="Company Address">{{old('company_address')}}</textarea>
                                 @error('company_address')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -111,9 +111,9 @@
                             <div class="form-group">
 
                                 <div class="col-md-6">
-                                    <input type="checkbox" id="md_checkbox_4"
+                                    <input type="checkbox" id="md_checkbox_4" {{old('newsletter') == 'on' ? 'checked' :''}}
                                         class="chk-col-info @error('newsletter') is-invalid @enderror" name="newsletter" />
-                                    <label for="md_checkbox_4">Newsletters</label>
+                                    <label for="md_checkbox_4">Data Privacy Policy accepted</label>
                                     @error('newsletter')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -121,10 +121,10 @@
                                     @enderror
                                 </div>
                                 <div class="col-md-6">
-                                    <input type="checkbox" id="md_checkbox_3"
+                                    <input type="checkbox" id="md_checkbox_3" {{old('marketing_permission') == 'on' ? 'checked' :''}}
                                         class="chk-col-success @error('marketing_permission') is-invalid @enderror"
                                         name="marketing_permission" />
-                                    <label for="md_checkbox_3">Marketing Permissions</label>
+                                    <label for="md_checkbox_3">All marketing permissions accepted</label>
                                     @error('marketing_permission')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>

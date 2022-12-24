@@ -57,7 +57,7 @@
                                             <option value="">Select Customer</option>
                                             @if ($customer)
                                                 @foreach ($customer as $item)
-                                                    <option value={{ $item->id }}>{{ $item->name }}</option>
+                                                    <option value={{ $item->id }} {{old('customer_id') == $item->id ? 'selected' : ''}}>{{ $item->name }}</option>
                                                 @endforeach
                                             @else
                                                 <option value="">NO Customer found</option>
@@ -79,8 +79,8 @@
                                         <label class="form-label">Order Type</label>
                                         <select class="selectpicker  @error('request_type') is-invalid @enderror"
                                             name="request_type">
-                                            <option value="1">Order</option>
                                             <option value="2"> Quote</option>
+                                            <option value="1" {{old('request_type') == 1 ? 'selected' : ''}}>Order</option>
                                         </select>
                                         @error('request_type')
                                             <span class="invalid-feedback" role="alert">
@@ -97,7 +97,7 @@
                                             name="language_id" style="width: 100%;">
                                             @if ($language)
                                                 @foreach ($language as $item)
-                                                    <option value={{ $item->id }}>{{ $item->name }}</option>
+                                                    <option value={{ $item->id }} {{old('language_id') == $item->id ? 'selected' : ''}}>{{ $item->name }}</option>
                                                 @endforeach
                                             @else
                                                 <option value="">NO Language found</option>
@@ -119,7 +119,7 @@
                                         <div class="col-12">
                                             <div class="form-group">
                                                 <label class="form-label">Start Location</label>
-                                                <input type="text" name="start_location"
+                                                <input type="text" name="start_location" value="{{old('start_location')}}"
                                                     class="form-control @error('start_location') is-invalid @enderror"
                                                     placeholder="Start Location">
                                                 @error('start_location')
@@ -140,6 +140,7 @@
                                                     <i class="fa fa-calendar"></i>
                                                 </div>
                                                 <input type="text" name="start_date" class="form-control pull-right @error('start_date') is-invalid @enderror"
+                                                value="{{old('start_date')}}"
                                                     data-date-format="yyyy-mm-dd" id="datepicker">
                                                 @error('start_date')
                                                     <span class="invalid-feedback" role="alert">
@@ -165,7 +166,7 @@
                                                         </div>
                                                     </div> --}}
 
-                                                    <input type="text"  name="start_time" class="form-control @error('start_time') is-invalid @enderror" placeholder="00:00:00">
+                                                    <input type="text"  name="start_time" class="form-control @error('start_time') is-invalid @enderror" value="{{old('start_time')}}" placeholder="00:00:00">
                                                     @error('start_time')
                                                         <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $message }}</strong>
@@ -181,7 +182,7 @@
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label class="form-label">Present in Location</label>
-                                            <input type="text" name="present_in_location"
+                                            <input type="text" name="present_in_location"  value="{{old('present_in_location')}}"
                                                 class="form-control @error('present_in_location') is-invalid @enderror"
                                                 placeholder="00:00:00">
                                             @error('present_in_location')
@@ -202,7 +203,7 @@
                                         <div class="col-12">
                                             <div class="form-group">
                                                 <label class="form-label">End Location</label>
-                                                <input type="text" name="end_location"
+                                                <input type="text" name="end_location" value="{{old('end_location')}}"
                                                     class="form-control @error('end_location') is-invalid @enderror"
                                                     placeholder="Start Location">
                                                 @error('end_location')
@@ -223,7 +224,7 @@
                                                     <i class="fa fa-calendar"></i>
                                                 </div>
                                                 <input type="text" name="end_date" class="form-control pull-right datepicker @error('end_date') is-invalid @enderror"
-                                                    data-date-format="yyyy-mm-dd" id="">
+                                                value="{{old('end_date')}}" data-date-format="yyyy-mm-dd" id="">
                                                 @error('end_date')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
@@ -237,16 +238,7 @@
                                             <div class="bootstrap-timepicker">
                                                 <div class="form-group">
                                                     <label class="form-label">End Time</label>
-
-                                                    {{-- <div class="input-group">
-                                                        <input type="text" name="end_time"
-                                                            class="form-control timepicker  @error('end_time') is-invalid @enderror">
-
-                                                        <div class="input-group-addon">
-                                                            <i class="fa fa-clock-o"></i>
-                                                        </div>
-                                                    </div> --}}
-                                                    <input type="text" name="end_time" id=""  placeholder="00:00:00" class="form-control @error('end_time') is-invalid @enderror">
+                                                    <input type="text"   value="{{old('end_time')}}"  name="end_time" id=""  placeholder="00:00:00" class="form-control @error('end_time') is-invalid @enderror">
                                                     <!-- /.input group -->
                                                     @error('end_time')
                                                         <span class="invalid-feedback" role="alert">
@@ -258,19 +250,19 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-12">
-                                        <div class="form-group">
-                                            <label class="form-label">Present in Service hall</label>
-                                            <input type="text" name="present_in_service_hall"
-                                                class="form-control @error('present_in_service_hall') is-invalid @enderror"
-                                                placeholder="00:00:00">
-                                            @error('present_in_service_hall')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-                                    </div>
+                                        {{-- <div class="col-12">
+                                            <div class="form-group">
+                                                <label class="form-label">Present in Service hall</label>
+                                                <input type="text" name="present_in_service_hall"
+                                                    class="form-control @error('present_in_service_hall') is-invalid @enderror"
+                                                    placeholder="00:00:00">
+                                                @error('present_in_service_hall')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
+                                        </div> --}}
                                 </div>
                             </div>
                             {{-- End Location box end --}}
@@ -279,8 +271,8 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <label class="form-label">Head Count</label>
-                                        <input type="text" name="head_count"
+                                        <label class="form-label">Amount of passangers</label>
+                                        <input type="text" name="head_count" value="{{old('head_count')}}"
                                             class="form-control @error('head_count') is-invalid @enderror"
                                             placeholder="head count">
                                         @error('head_count')
@@ -290,7 +282,7 @@
                                         @enderror
                                     </div>
                                 </div>
-                                <div class="col-12">
+                                {{-- <div class="col-12">
                                     <div class="form-group">
                                         <label class="form-label">Tax Rate</label>
                                         <input type="text" name="tax_rate"
@@ -302,11 +294,29 @@
                                             </span>
                                         @enderror
                                     </div>
+                                </div> --}}
+                                <div class="col-md-6">
+
+                                    <div class="form-group">
+                                        <label class="form-label">Tax rate</label>
+                                        <select name="tax_rate"
+                                            class="form-control select2  @error('tax_rate') is-invalid @enderror"
+                                            style="width: 100%;">
+                                            <option value="0" {{old('tax_rate') == '0' ? 'selected' : ''}}>0%</option>
+                                            <option value="10" {{old('tax_rate') == '10' ? 'selected' : ''}}>10%</option>
+                                            <option value="20" {{old('tax_rate') == '20' ? 'selected' : ''}}>20%</option>
+                                        </select>
+                                        @error('tax_rate')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label class="form-label">Price $ (0%)</label>
-                                        <input type="text" name="price"
+                                        <label class="form-label">Price (0%)</label>
+                                        <input type="text" name="price" value="{{old('price')}}"
                                             class="form-control @error('price') is-invalid @enderror"
                                             placeholder="Price">
                                         @error('price')
@@ -318,8 +328,8 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label class="form-label">Price $ (Inc. tax 10%)</label>
-                                        <input type="text" name="price_incl_tax"
+                                        <label class="form-label">Price (incl. tax)</label>
+                                        <input type="text" name="price_incl_tax" value="{{old('price_incl_tax')}}"
                                             class="form-control @error('price_incl_tax') is-invalid @enderror"
                                             placeholder="Price">
                                         @error('price_incl_tax')
@@ -340,7 +350,7 @@
                                             style="width: 100%;">
                                             @if ($driver)
                                                 @foreach ($driver as $item)
-                                                    <option value={{ $item->id }}>{{ $item->name }}</option>
+                                                    <option value={{ $item->id }} {{old('driver_id') == $item->id ? 'selected' :''}}> {{ $item->name }}</option>
                                                 @endforeach
                                             @else
                                                 <option value="100">NO Driver found</option>
@@ -356,16 +366,16 @@
                                 <div class="col-md-6">
 
                                     <div class="form-group">
-                                        <label class="form-label">Equipment</label>
+                                        <label class="form-label">Vehicle</label>
                                         <select name="equipment_id"
                                             class="form-control select2  @error('equipment_id') is-invalid @enderror"
                                             style="width: 100%;">
                                             @if ($equipment)
                                                 @foreach ($equipment as $item)
-                                                    <option value={{ $item->id }}>{{ $item->reg_no }}</option>
+                                                    <option value={{ $item->id }} {{old('equipment_id') == $item->id ? 'selected' :''}}>{{ $item->reg_no }}</option>
                                                 @endforeach
                                             @else
-                                                <option value="">NO Equipment found</option>
+                                                <option value="">NO Vehicle found</option>
                                             @endif
                                         </select>
                                         @error('equipment_id')
@@ -379,7 +389,7 @@
                                 <div class="col-12">
                                     <div class="form-group">
                                         <label class="form-label">Route</label>
-                                        <input type="text" name="route"
+                                        <input type="text" name="route" value="{{old('route')}}"
                                             class="form-control @error('route') is-invalid @enderror"
                                             placeholder="Route">
                                         @error('route')
@@ -394,7 +404,7 @@
                                     <div class="form-group">
                                         <label class="form-label">Other Wishes</label>
                                         <textarea style="resize:none" rows="5" name="other_wishes"
-                                            class="form-control  @error('other_wishes') is-invalid @enderror" placeholder="Other wishes"></textarea>
+                                            class="form-control  @error('other_wishes') is-invalid @enderror" placeholder="Other wishes">{{old('other_wishes')}}</textarea>
                                         @error('other_wishes')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -409,7 +419,7 @@
                             <div class="row">
                                 <div class="form-group">
                                     <div class="col-md-6">
-                                        <input type="checkbox" id="md_checkbox_4"
+                                        <input type="checkbox" id="md_checkbox_4" {{old('mobility_restrictions') == 'on' ? 'checked' :''}}
                                             class="chk-col-info @error('mobility_restrictions') is-invalid @enderror"
                                             name="mobility_restrictions" />
                                         <label for="md_checkbox_4">Mobility Restrictions </label>
@@ -420,7 +430,7 @@
                                         @enderror
                                     </div>
                                     <div class="col-md-6">
-                                        <input type="checkbox" id="md_checkbox_3"
+                                        <input type="checkbox" id="md_checkbox_3" {{old('invoiced') == 'on' ? 'checked' :''}}
                                             class="chk-col-success @error('invoiced') is-invalid @enderror"
                                             name="invoiced" />
                                         <label for="md_checkbox_3">Invoiced</label>
