@@ -299,8 +299,8 @@
 
                                     <div class="form-group">
                                         <label class="form-label">Tax rate</label>
-                                        <select name="tax_rate"
-                                            class="form-control select2  @error('tax_rate') is-invalid @enderror"
+                                        <select name="tax_rate" id="taxRate"
+                                            class="form-control priceCal select2  @error('tax_rate') is-invalid @enderror"
                                             style="width: 100%;">
                                             <option value="0" {{old('tax_rate') == '0' ? 'selected' : ''}}>0%</option>
                                             <option value="10" {{old('tax_rate') == '10' ? 'selected' : ''}}>10%</option>
@@ -316,8 +316,8 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="form-label">Price (0%)</label>
-                                        <input type="text" name="price" value="{{old('price')}}"
-                                            class="form-control @error('price') is-invalid @enderror"
+                                        <input type="text" name="price" value="{{old('price')}}" id="priceInput"
+                                            class="form-control priceCal @error('price') is-invalid @enderror"
                                             placeholder="Price">
                                         @error('price')
                                             <span class="invalid-feedback" role="alert">
@@ -329,9 +329,9 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="form-label">Price (incl. tax)</label>
-                                        <input type="text" name="price_incl_tax" value="{{old('price_incl_tax')}}"
+                                        <input type="text" name="price_incl_tax"  id="priceIncTax" value="{{old('price_incl_tax')}}"
                                             class="form-control @error('price_incl_tax') is-invalid @enderror"
-                                            placeholder="Price">
+                                            placeholder="Price" readonly>
                                         @error('price_incl_tax')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -489,6 +489,16 @@
                 format: 'yyyy-mm-dd',
                 startDate: '-3d'
             });
+
+            $(".priceCal").on("change",function(){
+                var priceIncTax = $("#priceIncTax");
+                var priceInput = Number($("#priceInput").val());
+                var taxRate = Number($("#taxRate").val());
+
+                var percAmount = (priceInput*taxRate)/100;
+                var finalAmount =percAmount+priceInput;
+                priceIncTax.val(finalAmount);
+                   });
         })
     </script>
 @endsection

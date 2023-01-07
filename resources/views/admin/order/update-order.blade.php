@@ -13,13 +13,14 @@
         <div class="row">
             <div class="col-lg-12 col-12">
                 <div class="box">
-                    <form class="form" action="{{ route('order-request.store') }}" method="POST"
+                    <form class="form" action="{{ route('order-request.update', $order->id) }}" method="POST"
                         enctype="multipart/form-data">
                         @csrf
+                        @method('PUT')
                         <div class="box-body">
                             <h4 class="box-title text-info mb-0"><i class="ti-user me-15"></i> Customer Details</h4>
                             <hr class="my-15">
-                            <div class="row">
+                            {{-- <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label class="form-label">Name</label>
@@ -29,7 +30,8 @@
 
                                     </div>
                                 </div>
-                            </div><input type="hidden" name="user_id" value="{{ auth()->user()->getUserDetails ? auth()->user()->getUserDetails->id : null }}">
+                            </div><input type="hidden" name="user_id"
+                                value="{{ auth()->user()->getUserDetails ? auth()->user()->getUserDetails->id : null }}">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
@@ -47,6 +49,31 @@
                                             readonly disabled>
                                     </div>
                                 </div>
+                            </div> --}}
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="form-label">Select Customer</label>
+                                        <select class="form-control select2  @error('customer_id') is-invalid @enderror"
+                                            name="customer_id" style="width: 100%;">
+                                            <option value="">Select Customer</option>
+                                            @if ($customer)
+                                                @foreach ($customer as $item)
+                                                    <option value={{ $item->id }}
+                                                        {{ $order->customer_id == $item->id ? 'selected' : '' }}>
+                                                        {{ $item->name }}</option>
+                                                @endforeach
+                                            @else
+                                                <option value="">NO Customer found</option>
+                                            @endif
+                                        </select>
+                                        @error('customer_id')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
                             </div>
                             <h4 class="box-title text-info mb-0 mt-20"><i class="ti-save me-15"></i> Requirements</h4>
                             <hr class="my-15">
@@ -56,8 +83,9 @@
                                         <label class="form-label">Order Type</label>
                                         <select class="selectpicker  @error('request_type') is-invalid @enderror"
                                             name="request_type">
-                                            <option value="1">Order</option>
                                             <option value="2"> Quote</option>
+                                            <option value="1" {{ $order->request_type == 1 ? 'selected' : '' }}>Order
+                                            </option>
                                         </select>
                                         @error('request_type')
                                             <span class="invalid-feedback" role="alert">
@@ -74,7 +102,9 @@
                                             name="language_id" style="width: 100%;">
                                             @if ($language)
                                                 @foreach ($language as $item)
-                                                    <option value={{ $item->id }}>{{ $item->name }}</option>
+                                                    <option value={{ $item->id }}
+                                                        {{ $order->language_id == $item->id ? 'selected' : '' }}>
+                                                        {{ $item->name }}</option>
                                                 @endforeach
                                             @else
                                                 <option value="">NO Language found</option>
@@ -97,6 +127,7 @@
                                             <div class="form-group">
                                                 <label class="form-label">Start Location</label>
                                                 <input type="text" name="start_location"
+                                                    value="{{ $order->start_location }}"
                                                     class="form-control @error('start_location') is-invalid @enderror"
                                                     placeholder="Start Location">
                                                 @error('start_location')
@@ -116,7 +147,8 @@
                                                 <div class="input-group-addon">
                                                     <i class="fa fa-calendar"></i>
                                                 </div>
-                                                <input type="text" name="start_date" class="form-control pull-right @error('start_date') is-invalid @enderror"
+                                                <input type="text" name="start_date" value="{{ $order->start_date }}"
+                                                    class="form-control pull-right @error('start_date') is-invalid @enderror"
                                                     data-date-format="yyyy-mm-dd" id="datepicker">
                                                 @error('start_date')
                                                     <span class="invalid-feedback" role="alert">
@@ -142,7 +174,10 @@
                                                         </div>
                                                     </div> --}}
 
-                                                    <input type="text"  name="start_time" class="form-control @error('start_time') is-invalid @enderror" placeholder="00:00:00">
+                                                    <input type="text" value="{{ $order->start_time }}"
+                                                        name="start_time"
+                                                        class="form-control @error('start_time') is-invalid @enderror"
+                                                        placeholder="00:00:00">
                                                     @error('start_time')
                                                         <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $message }}</strong>
@@ -159,6 +194,7 @@
                                         <div class="form-group">
                                             <label class="form-label">Present in Location</label>
                                             <input type="text" name="present_in_location"
+                                                value="{{ $order->present_in_location }}"
                                                 class="form-control @error('present_in_location') is-invalid @enderror"
                                                 placeholder="00:00:00">
                                             @error('present_in_location')
@@ -180,6 +216,7 @@
                                             <div class="form-group">
                                                 <label class="form-label">End Location</label>
                                                 <input type="text" name="end_location"
+                                                    value="{{ $order->end_location }}"
                                                     class="form-control @error('end_location') is-invalid @enderror"
                                                     placeholder="Start Location">
                                                 @error('end_location')
@@ -199,7 +236,8 @@
                                                 <div class="input-group-addon">
                                                     <i class="fa fa-calendar"></i>
                                                 </div>
-                                                <input type="text" name="end_date" class="form-control pull-right datepicker @error('end_date') is-invalid @enderror"
+                                                <input type="text" name="end_date" value="{{ $order->end_date }}"
+                                                    class="form-control pull-right datepicker @error('end_date') is-invalid @enderror"
                                                     data-date-format="yyyy-mm-dd" id="">
                                                 @error('end_date')
                                                     <span class="invalid-feedback" role="alert">
@@ -223,7 +261,9 @@
                                                             <i class="fa fa-clock-o"></i>
                                                         </div>
                                                     </div> --}}
-                                                    <input type="text" name="end_time" id=""  placeholder="00:00:00" class="form-control @error('end_time') is-invalid @enderror">
+                                                    <input type="text" value="{{ $order->end_time }}" name="end_time"
+                                                        id="" placeholder="00:00:00"
+                                                        class="form-control @error('end_time') is-invalid @enderror">
                                                     <!-- /.input group -->
                                                     @error('end_time')
                                                         <span class="invalid-feedback" role="alert">
@@ -235,7 +275,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-12">
+                                    {{-- <div class="col-12">
                                         <div class="form-group">
                                             <label class="form-label">Present in Service hall</label>
                                             <input type="text" name="present_in_service_hall"
@@ -247,7 +287,7 @@
                                                 </span>
                                             @enderror
                                         </div>
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </div>
                             {{-- End Location box end --}}
@@ -257,7 +297,7 @@
                                 <div class="col-12">
                                     <div class="form-group">
                                         <label class="form-label">Head Count</label>
-                                        <input type="text" name="head_count"
+                                        <input type="text" name="head_count" value="{{ $order->head_count }}"
                                             class="form-control @error('head_count') is-invalid @enderror"
                                             placeholder="head count">
                                         @error('head_count')
@@ -285,11 +325,15 @@
                                     <div class="form-group">
                                         <label class="form-label">Tax rate</label>
                                         <select name="tax_rate"
-                                            class="form-control select2  @error('tax_rate') is-invalid @enderror"
+                                            class="form-control priceCal select2  @error('tax_rate') is-invalid @enderror"
+                                            id="taxRate"
                                             style="width: 100%;">
-                                            <option value="0" {{old('tax_rate') == '0' ? 'selected' : ''}}>0%</option>
-                                            <option value="10" {{old('tax_rate') == '10' ? 'selected' : ''}}>10%</option>
-                                            <option value="20" {{old('tax_rate') == '20' ? 'selected' : ''}}>20%</option>
+                                            <option value="0" {{ $order->tax_rate == '0' ? 'selected' : '' }}>0%
+                                            </option>
+                                            <option value="10" {{ $order->tax_rate == '10' ? 'selected' : '' }}>10%
+                                            </option>
+                                            <option value="20" {{ $order->tax_rate == '20' ? 'selected' : '' }}>20%
+                                            </option>
                                         </select>
                                         @error('tax_rate')
                                             <span class="invalid-feedback" role="alert">
@@ -301,8 +345,8 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="form-label">Price $ (0%)</label>
-                                        <input type="text" name="price"
-                                            class="form-control @error('price') is-invalid @enderror"
+                                        <input type="text" name="price" value="{{ $order->price }}" id="priceInput"
+                                            class="form-control priceCal @error('price') is-invalid @enderror"
                                             placeholder="Price">
                                         @error('price')
                                             <span class="invalid-feedback" role="alert">
@@ -313,8 +357,8 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label class="form-label">Price $ (Inc. tax 10%)</label>
-                                        <input type="text" name="price_incl_tax"
+                                        <label class="form-label">Price $ (Inc.tax%)</label>
+                                        <input type="text" name="price_incl_tax" value="{{ $order->price_incl_tax }}" id="priceIncTax" readonly
                                             class="form-control @error('price_incl_tax') is-invalid @enderror"
                                             placeholder="Price">
                                         @error('price_incl_tax')
@@ -335,7 +379,9 @@
                                             style="width: 100%;">
                                             @if ($driver)
                                                 @foreach ($driver as $item)
-                                                    <option value={{ $item->id }}>{{ $item->name }}</option>
+                                                    <option value={{ $item->id }}
+                                                        {{ $order->driver_id == $item->id ? 'selected' : '' }}>
+                                                        {{ $item->name }}</option>
                                                 @endforeach
                                             @else
                                                 <option value="100">NO Driver found</option>
@@ -351,16 +397,18 @@
                                 <div class="col-md-6">
 
                                     <div class="form-group">
-                                        <label class="form-label">Equipment</label>
+                                        <label class="form-label">Vehicle</label>
                                         <select name="equipment_id"
                                             class="form-control select2  @error('equipment_id') is-invalid @enderror"
                                             style="width: 100%;">
                                             @if ($equipment)
                                                 @foreach ($equipment as $item)
-                                                    <option value={{ $item->id }}>{{ $item->reg_no }}</option>
+                                                    <option value={{ $item->id }}
+                                                        {{ $order->equipment_id == $item->id ? 'selected' : '' }}>
+                                                        {{ $item->reg_no }}</option>
                                                 @endforeach
                                             @else
-                                                <option value="">NO Equipment found</option>
+                                                <option value="">NO Vehicle found</option>
                                             @endif
                                         </select>
                                         @error('equipment_id')
@@ -374,7 +422,7 @@
                                 <div class="col-12">
                                     <div class="form-group">
                                         <label class="form-label">Route</label>
-                                        <input type="text" name="route"
+                                        <input type="text" name="route" value="{{ $order->route }}"
                                             class="form-control @error('route') is-invalid @enderror"
                                             placeholder="Route">
                                         @error('route')
@@ -389,7 +437,7 @@
                                     <div class="form-group">
                                         <label class="form-label">Other Wishes</label>
                                         <textarea style="resize:none" rows="5" name="other_wishes"
-                                            class="form-control  @error('other_wishes') is-invalid @enderror" placeholder="Other wishes"></textarea>
+                                            class="form-control  @error('other_wishes') is-invalid @enderror" placeholder="Other wishes">{{ $order->other_wishes }}</textarea>
                                         @error('other_wishes')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -405,6 +453,7 @@
                                 <div class="form-group">
                                     <div class="col-md-6">
                                         <input type="checkbox" id="md_checkbox_4"
+                                            {{ $order->mobility_restrictions == 1 ? 'checked' : '' }}
                                             class="chk-col-info @error('mobility_restrictions') is-invalid @enderror"
                                             name="mobility_restrictions" />
                                         <label for="md_checkbox_4">Mobility Restrictions </label>
@@ -416,6 +465,7 @@
                                     </div>
                                     <div class="col-md-6">
                                         <input type="checkbox" id="md_checkbox_3"
+                                            {{ $order->invoiced == 1 ? 'checked' : '' }}
                                             class="chk-col-success @error('invoiced') is-invalid @enderror"
                                             name="invoiced" />
                                         <label for="md_checkbox_3">Invoiced</label>
@@ -431,11 +481,11 @@
                         </div>
                         <!-- /.box-body -->
                         <div class="box-footer">
-                            <button type="reset" class="btn btn-warning me-1">
+                            <a href="{{ route('order-request.index') }}" class="btn btn-warning me-1">
                                 <i class="ti-trash"></i> Cancel
-                            </button>
+                            </a>
                             <button type="submit" class="btn btn-primary">
-                                <i class="ti-save-alt"></i> Save
+                                <i class="ti-save-alt"></i> Update
                             </button>
                         </div>
                     </form>
@@ -473,6 +523,15 @@
             $('.datepicker').datepicker({
                 format: 'yyyy-mm-dd',
                 startDate: '-3d'
+            });
+            $(".priceCal").on("change", function() {
+                var priceIncTax = $("#priceIncTax");
+                var priceInput = Number($("#priceInput").val());
+                var taxRate = Number($("#taxRate").val());
+
+                var percAmount = (priceInput * taxRate) / 100;
+                var finalAmount = percAmount + priceInput;
+                priceIncTax.val(finalAmount);
             });
         })
     </script>

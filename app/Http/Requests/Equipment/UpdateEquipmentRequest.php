@@ -32,6 +32,7 @@ class UpdateEquipmentRequest extends FormRequest
             "emmission_classification" => ['nullable'],
             "place_of_business" => ['nullable'],
             "maintenance" => ['nullable'],
+            "equipments_in_vehicle"=>["nullable"]
         ];
     }
 }

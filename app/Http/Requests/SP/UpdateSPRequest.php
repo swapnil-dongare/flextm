@@ -28,7 +28,7 @@ class UpdateSPRequest extends FormRequest
             "name" => ['required'],
             "mobile" => ['required',],
             "email" => ['required', 'unique:s_p_s,email,' . $id . ',id,deleted_at,NULL'],
-            "vat_id" => ['nullable','integer'],
+            "vat_id" => ['nullable','regex:/^[ 0-9-]*$/'],
             "address" => ['nullable'],
             "invoice_address" => ['nullable'],
             "country" => ['nullable'],

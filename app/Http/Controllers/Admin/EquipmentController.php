@@ -65,15 +65,16 @@ class EquipmentController extends Controller
                 "emmission_classification" => $request->emmission_classification,
                 "next_inspection" => $request->next_inspection,
                 "place_of_business" => $request->place_of_business,
-                "maintenance" => $request->maintenance
+                "maintenance" => $request->maintenance,
+                "equipments_in_vehicle"=>$request->equipments_in_vehicle
             ]);
 
             if ($equipment) {
                 return redirect()->route('equipment.index')->with("full-top-success", 'Equipment added successfully!');
             }
             return redirect()->route('equipment.index')->with("full-top-error", 'Unable to add Equipment');
-        } catch (\Throwable $th) {
-            return redirect()->route('equipment.index')->with("full-top-error", 'Internal Server error');
+        } catch (\Exception $th) {
+            return redirect()->route('equipment.index')->with("full-top-error", 'Internal Server error'.$th->getMessage());
         }
     }
 

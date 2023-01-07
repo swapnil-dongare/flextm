@@ -23,6 +23,7 @@ class Role extends Model
 
     public const ADMINPermission =[
         'list-sp', 'create-sp', 'edit-sp', 'delete-sp',
+        'list-business-place', 'create-business-place', 'edit-business-place', 'delete-business-place',
     ];
 
     public const SPPermission =  [

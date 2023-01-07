@@ -127,7 +127,7 @@
                                 <th scope="col">End Location</th>
                                 <th scope="col">End Date</th>
                                 <th scope="col">End Time</th>
-                                <th scope="col">Present in Service Hall</th>
+                                {{-- <th scope="col">Present in Service Hall</th> --}}
                                 <th scope="col">Amount of passangers</th>
                                 <th scope="col">Mobility Restrictions</th>
                                 <th scope="col">Price</th>
@@ -158,11 +158,11 @@
                                         <td>{{ $item->end_location }}</td>
                                         <td>{{ $item->end_date }}</td>
                                         <td>{{ $item->end_time }}</td>
-                                        <td>{{ $item->present_in_service_hall }}</td>
+                                        {{-- <td>{{ $item->present_in_service_hall }}</td> --}}
                                         <td>{{ $item->head_count }}</td>
                                         <td>{{ $item->mobility_restrictions ? 'Yes' : 'No' }}</td>
                                         <td>{{ $item->price }}</td>
-                                        <td>{{ $item->tax_rate }}</td>
+                                        <td>{{ $item->tax_rate }}%</td>
                                         <td>{{ $item->price_incl_tax }}</td>
                                         <td>{{ $item->invoiced ? 'Yes' : 'No' }}</td>
                                         <td>{{ $item->getDriverDetails ? $item->getDriverDetails->name : 'NA' }}</td>

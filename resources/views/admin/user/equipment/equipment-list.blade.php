@@ -26,6 +26,7 @@
                                         <th scope="col">#</th>
                                         <th scope="col">Reg. No.</th>
                                         <th scope="col">Amount of Seats</th>
+                                        <th scope="col">Equipments in Vehicle</th>
                                         <th scope="col">Reg. Year</th>
                                         <th scope="col">Emmission Classification</th>
                                         <th scope="col">Next Inspection</th>
@@ -44,10 +45,12 @@
                                                 <th scope="row">{{ $sr }}</th>
                                                 <td>{{ $item->reg_no }}</td>
                                                 <td>{{ $item->amount_of_seats }}</td>
+                                                <td>{{ $item->equipments_in_vehicle }}</td>
                                                 <td>{{ $item->reg_year }}</td>
                                                 <td>{{ $item->emmission_classification }}</td>
                                                 <td>{{ $item->next_inspection }}</td>
-                                                <td>{{ $item->getBusinessPlace ? $item->getBusinessPlace->name : null  }}</td>
+                                                <td>{{ $item->getBusinessPlace ? $item->getBusinessPlace->name : null }}
+                                                </td>
                                                 <td style="display: flex">
 
 

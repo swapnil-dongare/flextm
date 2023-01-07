@@ -13,7 +13,7 @@
             <div class="col-12 col-lg-12">
                 <div class="box">
                     <div class="box-header with-border">
-                        @can('create-customer')
+                        @can('create-business-place')
                             <a href="{{ route('business-place.create') }}" class="btn btn-info" style="float:right">Add Place of
                                 Business
                                 <i class="fa fa-user-plus" aria-hidden="true"></i></a>
@@ -54,7 +54,7 @@
 
                                                         </form>
                                                     @endcan
-                                                    @can('edit-tm')
+                                                    @can('edit-business-place')
                                                         <a class="btn btn-primary m-1"
                                                             href="{{ route('business-place.edit', ['business_place' => $item->id]) }}">
                                                             <i style="font-size:20px" class="fa fa-edit" aria-hidden="true"></i>

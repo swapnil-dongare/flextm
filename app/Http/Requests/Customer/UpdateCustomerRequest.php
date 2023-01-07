@@ -30,7 +30,7 @@ class UpdateCustomerRequest extends FormRequest
             "email" => ['required', 'email', 'unique:customers,email,' . $id . ',id,deleted_at,NULL'],
             "company_name" => ['string', 'nullable'],
             "company_phone" => ['numeric', 'nullable'],
-            "vat_id" => ['integer', 'nullable'],
+            "vat_id" => ['nullable','regex:/^[ 0-9-]*$/'],
             "company_address" => ['string', 'nullable'],
             "newsletter" => ['nullable'],
             "marketing_permission" => ['nullable']

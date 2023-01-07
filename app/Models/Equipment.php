@@ -18,7 +18,8 @@ class Equipment extends Model
         "emmission_classification",
         "next_inspection",
         "place_of_business",
-        "maintenance"
+        "maintenance",
+        "equipments_in_vehicle"
     ];
 
     public function getBusinessPlace()
