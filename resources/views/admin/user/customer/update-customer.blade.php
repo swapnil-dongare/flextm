@@ -14,7 +14,7 @@
             <div class="col-lg-2 col-12"></div>
             <div class="col-lg-8 col-12">
                 <div class="box">
-                    <form class="form" action="{{route('update-customer',$customer->id)}}" method="POST">
+                    <form class="form" action="{{ route('update-customer', $customer->id) }}" method="POST">
                         @csrf
                         <div class="box-body">
                             <h4 class="box-title text-info mb-0"><i class="ti-user me-15"></i> Personal Info</h4>
@@ -108,6 +108,50 @@
                                 <textarea rows="5" name="company_address" class="form-control @error('company_address') is-invalid @enderror"
                                     placeholder="Company Address" value="">{{ $customer->company_address }}</textarea>
                                 @error('company_address')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                {{-- <label class="form-label">Post Address</label> --}}
+                                <input type="text" name="company_post_address"
+                                    value="{{ $customer->company_post_address }}"
+                                    class="form-control @error('company_post_address') is-invalid @enderror"
+                                    placeholder="Post Address">
+                                @error('company_post_address')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                {{-- <label class="form-label">Zip Code</label> --}}
+                                <input type="text" name="company_zipcode" value="{{ $customer->company_zipcode }}"
+                                    class="form-control @error('company_zipcode') is-invalid @enderror"
+                                    placeholder="Zip Code">
+                                @error('company_zipcode')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                {{-- <label class="form-label">City</label> --}}
+                                <input type="text" name="company_city" value="{{ $customer->company_city }}"
+                                    class="form-control @error('company_city') is-invalid @enderror" placeholder="City">
+                                @error('company_city')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                {{-- <label class="form-label">country</label> --}}
+                                <input type="text" name="company_country" value="{{ $customer->company_country }}"
+                                    class="form-control @error('company_country') is-invalid @enderror"
+                                    placeholder="Country">
+                                @error('company_country')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

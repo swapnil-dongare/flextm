@@ -149,7 +149,7 @@
                                                 </div>
                                                 <input type="text" name="start_date" value="{{ $order->start_date }}"
                                                     class="form-control pull-right @error('start_date') is-invalid @enderror"
-                                                    data-date-format="yyyy-mm-dd" id="datepicker">
+                                                    data-date-format="dd-mm-yyyy" id="datepicker">
                                                 @error('start_date')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
@@ -157,7 +157,7 @@
                                                 @enderror
                                             </div>
 
-                                            {{-- <input type="text"  class="form-control" placeholder="yyyy-mm-dd" name="start_date" id=""> --}}
+                                            {{-- <input type="text"  class="form-control" placeholder="dd-mm-yyyy" name="start_date" id=""> --}}
                                         </div>
                                         <div class="col-md-6">
                                             <div class="bootstrap-timepicker">
@@ -238,7 +238,7 @@
                                                 </div>
                                                 <input type="text" name="end_date" value="{{ $order->end_date }}"
                                                     class="form-control pull-right datepicker @error('end_date') is-invalid @enderror"
-                                                    data-date-format="yyyy-mm-dd" id="">
+                                                    data-date-format="dd-mm-yyyy" id="">
                                                 @error('end_date')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
@@ -246,7 +246,7 @@
                                                 @enderror
                                             </div>
 
-                                            {{-- <input type="text"  class="form-control" placeholder="yyyy-mm-dd" name="start_date" id=""> --}}
+                                            {{-- <input type="text"  class="form-control" placeholder="dd-mm-yyyy" name="start_date" id=""> --}}
                                         </div>
                                         <div class="col-md-6">
                                             <div class="bootstrap-timepicker">
@@ -517,13 +517,13 @@
 
 
             $('.datepicker').datepicker({
-                format: 'yyyy-mm-dd',
-                startDate: '-3d'
+                format: 'dd-mm-yyyy',
+                // startDate: '-3d'
             });
-            $('.datepicker').datepicker({
-                format: 'yyyy-mm-dd',
-                startDate: '-3d'
-            });
+            // $('.datepicker').datepicker({
+            //     format: 'dd-mm-yyyy',
+            //     startDate: '-3d'
+            // });
             $(".priceCal").on("change", function() {
                 var priceIncTax = $("#priceIncTax");
                 var priceInput = Number($("#priceInput").val());

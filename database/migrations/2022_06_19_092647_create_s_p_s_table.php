@@ -21,8 +21,15 @@ class CreateSPSTable extends Migration
             $table->string('email')->nullable();
             $table->string('vat_id')->nullable();
             $table->text('address')->nullable();
+            $table->text('post_address')->nullable();
+            $table->text('zipcode')->nullable();
+            $table->text('city')->nullable();
+            $table->text('country')->nullable();
             $table->text('invoice_address')->nullable();
-            $table->string('country')->nullable();
+            $table->text('post_invoice_address')->nullable();
+            $table->text('zipcode_invoice_address')->nullable();
+            $table->text('city_invoice_address')->nullable();
+            $table->string('country_invoice_address')->nullable();
             $table->string('language_id')->nullable()->references('id')->on('languages')->onDelete('cascade')->onUpdate('cascade');
             $table->boolean('free_trial')->default(false);
             $table->string('subscription')->nullable();

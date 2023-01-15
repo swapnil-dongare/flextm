@@ -23,6 +23,7 @@
                                     <div class="form-group">
                                         <label class="form-label">Registartion Number</label>
                                         <input type="text" name="reg_no"
+                                            value="{{old('reg_no')}}"
                                             class="form-control @error('reg_no') is-invalid @enderror"
                                             placeholder="Registration Number">
                                         @error('reg_no')
@@ -38,6 +39,7 @@
                                     <div class="form-group">
                                         <label class="form-label">Amount Of Seats</label>
                                         <input type="text" name="amount_of_seats"
+                                        value="{{old('amount_of_seats')}}"
                                             class="form-control @error('amount_of_seats') is-invalid @enderror"
                                             placeholder="Amount Of Seats">
                                         @error('amount_of_seats')
@@ -51,6 +53,7 @@
                                     <div class="form-group">
                                         <label class="form-label">Equipments in vehicle</label>
                                         <input type="text" name="equipments_in_vehicle"
+                                        value="{{old('equipments_in_vehicle')}}"
                                             class="form-control @error('equipments_in_vehicle') is-invalid @enderror"
                                             placeholder="Equipments in vehicle">
                                         @error('equipments_in_vehicle')
@@ -68,7 +71,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="form-label">Year of registration</label>
-                                        <input type="text" name="reg_year" id="regYear"
+                                        <input type="text" name="reg_year" id="regYear"  value="{{old('reg_year')}}"
                                             class="form-control @error('reg_year') is-invalid @enderror"
                                             placeholder="Year of registration">
                                         @error('reg_year')
@@ -81,7 +84,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="form-label">Emission class</label>
-                                        <input type="text" name="emmission_classification"
+                                        <input type="text" name="emmission_classification"  value="{{old('emmission_classification')}}"
                                             class="form-control @error('emmission_classification') is-invalid @enderror"
                                             placeholder="Emission class">
                                         @error('emmission_classification')
@@ -102,8 +105,9 @@
                                                 <i class="fa fa-calendar"></i>
                                             </div>
                                             <input type="text" name="next_inspection"
+                                            value="{{old('next_inspection')}}"
                                                 class="form-control pull-right @error('next_inspection') is-invalid @enderror"
-                                                data-date-format="yyyy-mm-dd" id="datepicker">
+                                                data-date-format="dd-mm-yyyy" id="datepicker">
                                             @error('next_inspection')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -120,7 +124,7 @@
                                             <option value="">Select--</option>
                                             @if (sizeof($place) > 0)
                                                 @foreach ($place as $item)
-                                                    <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                                    <option value="{{ $item->id }}" {{old('place_of_business') == $item->id ? 'selected' : ''}}>{{ $item->name }}</option>
                                                 @endforeach
                                             @else
                                                 <option value="">No data found</option>
@@ -137,7 +141,7 @@
                             <div class="form-group">
                                 <label class="form-label">Maintenance</label>
                                 <textarea rows="5" name="maintenance" class="form-control @error('maintenance') is-invalid @enderror"
-                                    placeholder="Maintenance"></textarea>
+                                    placeholder="Maintenance"> {{old('maintenance')}}</textarea>
                                 @error('maintenance')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -145,7 +149,7 @@
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <input type="checkbox" id="md_checkbox_3"
+                                <input type="checkbox" id="md_checkbox_3"  {{old('disablity') == 'on' ? 'checked' : ''}}
                                     class="chk-col-success @error('disablity') is-invalid @enderror" name="disablity" />
                                 <label for="md_checkbox_3">Disability</label>
                                 @error('disablity')

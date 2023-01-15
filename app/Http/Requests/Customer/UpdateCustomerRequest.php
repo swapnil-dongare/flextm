@@ -32,6 +32,10 @@ class UpdateCustomerRequest extends FormRequest
             "company_phone" => ['numeric', 'nullable'],
             "vat_id" => ['nullable','regex:/^[ 0-9-]*$/'],
             "company_address" => ['string', 'nullable'],
+            "company_post_address" => ['string', 'nullable'],
+            "company_zipcode" => ['string', 'nullable'],
+            "company_city" => ['string', 'nullable'],
+            "company_country" => ['string', 'nullable'],
             "newsletter" => ['nullable'],
             "marketing_permission" => ['nullable']
         ];

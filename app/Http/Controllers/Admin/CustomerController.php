@@ -45,18 +45,12 @@ class CustomerController extends Controller
 
         DB::beginTransaction();
         try {
-            $customer = Customer::create([
+            $request->merge([
                 'organization_id' => auth()->user()->hasRole(Role::SP) ? Auth::user()->id : auth()->user()->getUserDetails->organization_id,
-                "name" => $request->name,
-                "email" => $request->email,
-                "mobile" => $request->mobile,
-                "company_name" => $request->company_name,
-                "company_phone" => $request->company_phone,
-                "vat_id" => $request->vat_id,
-                "company_address" => $request->company_address,
                 "newsletter" => $request->newsletter == "on" ? true : false,
                 "marketing_permission" => $request->marketing_permission == 'on' ? true : false
             ]);
+            $customer = Customer::create($request->all());
 
             // seeding user for customer
             $user =   User::create([
@@ -74,7 +68,7 @@ class CustomerController extends Controller
             return redirect()->route('get-user-customer')->with("full-top-error", 'Unable to add Customer');
         } catch (\Throwable $th) {
             DB::rollBack();
-            return redirect()->route('get-user-customer')->with("full-top-error", $th->getMessage());
+            return redirect()->back()->with("full-top-error", $th->getMessage());
         }
     }
 
@@ -117,6 +111,10 @@ class CustomerController extends Controller
                 $customer->company_phone = $request->company_phone;
                 $customer->vat_id = $request->vat_id;
                 $customer->company_address = $request->company_address;
+                $customer->company_post_address = $request->company_post_address;
+                $customer->company_zipcode = $request->company_zipcode;
+                $customer->company_city = $request->company_city;
+                $customer->company_country = $request->company_country;
                 $customer->newsletter = $request->newsletter == "on" ? true : false;
                 $customer->marketing_permission = $request->marketing_permission == 'on' ? true : false;
                 $customer->update();

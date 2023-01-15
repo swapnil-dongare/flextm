@@ -119,7 +119,7 @@
                                             <input type="text" name="next_inspection"
                                                 value="{{ $equipment->next_inspection }}"
                                                 class="form-control pull-right @error('next_inspection') is-invalid @enderror"
-                                                data-date-format="yyyy-mm-dd" id="datepicker">
+                                                data-date-format="dd-mm-yyyy" id="datepicker">
                                             @error('next_inspection')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -198,7 +198,9 @@
                     reader.readAsDataURL(file);
                 }
             });
-
+            $("#datepicker").datepicker({
+                format:'dd-mm-yyyy'
+            })
             $("#regYear").datepicker({
                 format: "yyyy",
                 viewMode: "years",

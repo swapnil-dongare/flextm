@@ -93,7 +93,7 @@
                                                 <i class="fa fa-calendar"></i>
                                             </div>
                                             <input type="text" name="valid_until" class="form-control pull-right" value="{{old('valid_until')}}"
-                                                data-date-format="yyyy-mm-dd" id="datepicker">
+                                                data-date-format="dd-mm-yyyy" id="datepicker">
                                             @error('valid_until')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>

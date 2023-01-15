@@ -23,6 +23,10 @@ class CreateCustomersTable extends Migration
             $table->bigInteger('company_phone')->nullable();
             $table->string('vat_id')->nullable();
             $table->text('company_address')->nullable();
+            $table->text('company_post_address')->nullable();
+            $table->text('company_zipcode')->nullable();
+            $table->text('company_city')->nullable();
+            $table->text('company_country')->nullable();
             $table->boolean('newsletter')->default(false);
             $table->boolean('marketing_permission')->default(false);
             $table->softDeletes();

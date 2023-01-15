@@ -24,6 +24,7 @@ class Role extends Model
     public const ADMINPermission =[
         'list-sp', 'create-sp', 'edit-sp', 'delete-sp',
         'list-business-place', 'create-business-place', 'edit-business-place', 'delete-business-place',
+        'list-customer', 'create-customer', 'edit-customer', 'delete-customer',//need to remove
     ];
 
     public const SPPermission =  [

@@ -53,7 +53,7 @@ class SPController extends Controller
     public function create()
     {
         $lang = Language::all();
-        return view('admin.user.sp.add-sp',['language'=>$lang]);
+        return view('admin.user.sp.add-sp', ['language' => $lang]);
     }
 
     /**
@@ -74,20 +74,14 @@ class SPController extends Controller
                 $flag = true;
             }
 
-            $sp = SP::create([
+            $request->merge([
                 "admin_id" => auth()->user()->id,
-                "name" => $request->name,
-                "mobile" => $request->mobile,
-                "email" => $request->email,
-                "vat_id" => $request->vat_id,
                 "address" => $request->company_address,
-                "invoice_address" => $request->invoice_address,
-                "country" => $request->country,
-                "language_id" => $request->language_id,
                 "free_trial" => $request->free_trial == "on" ? true : false,
-                "subscription" => $request->subscription,
                 "logo_url" => $url
             ]);
+
+            $sp = SP::create($request->all());
 
             // seeding user for customer
             $user =   User::create([
@@ -132,7 +126,7 @@ class SPController extends Controller
             $sp = SP::find($id);
             $lang = Language::all();
             if ($sp) {
-                return view('admin.user.sp.update-sp', ['sp' => $sp,'language'=>$lang]);
+                return view('admin.user.sp.update-sp', ['sp' => $sp, 'language' => $lang]);
             }
             return redirect()->route('organization.index')->with("full-top-error", 'Service Provider not found!');
         } catch (\Throwable $th) {
@@ -170,8 +164,15 @@ class SPController extends Controller
             $sp->email = $request->email;
             $sp->vat_id = $request->vat_id;
             $sp->address = $request->company_address;
-            $sp->invoice_address = $request->invoice_address;
+            $sp->post_address = $request->post_address;
+            $sp->zipcode = $request->zipcode;
+            $sp->city = $request->city;
             $sp->country = $request->country;
+            $sp->invoice_address = $request->invoice_address;
+            $sp->post_invoice_address = $request->post_invoice_address;
+            $sp->zipcode_invoice_address = $request->zipcode_invoice_address;
+            $sp->city_invoice_address = $request->city_invoice_address;
+            $sp->country_invoice_address = $request->country_invoice_address;
             $sp->language_id = $request->language_id;
             $sp->free_trial = $request->free_trial == "on" ? true : false;
             $sp->subscription = $request->subscription;

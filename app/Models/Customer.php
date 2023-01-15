@@ -21,6 +21,10 @@ class Customer extends Model
         'company_phone',
         'vat_id',
         'company_address',
+        "company_post_address",
+        "company_zipcode",
+        "company_city",
+        "company_country",
         'newsletter',
         'marketing_permission'
     ];

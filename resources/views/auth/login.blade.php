@@ -75,8 +75,8 @@
                                         <!-- /.col -->
                                         <div class="col-6">
                                             <div class="fog-pwd text-end">
-                                                <a href="javascript:void(0)" class="hover-warning"><i
-                                                        class="ion ion-locked"></i> Forgot pwd?</a><br>
+                                                {{-- <a href="javascript:void(0)" class="hover-warning"><i
+                                                        class="ion ion-locked"></i> Forgot pwd?</a><br> --}}
                                             </div>
                                         </div>
                                         <!-- /.col -->
@@ -87,12 +87,12 @@
                                     </div>
                                 </form>
                                 <div class="text-center">
-                                    <p class="mt-15 mb-0">Don't have an account? <a href="auth_register.html"
-                                            class="text-warning ms-5">Sign Up</a></p>
+                                    {{-- <p class="mt-15 mb-0">Don't have an account? <a href="auth_register.html"
+                                            class="text-warning ms-5">Sign Up</a></p> --}}
                                 </div>
                             </div>
                         </div>
-                        <div class="text-center">
+                        {{-- <div class="text-center">
                             <p class="mt-20 text-white">- Sign With -</p>
                             <p class="gap-items-2 mb-20">
                                 <a class="btn btn-social-icon btn-round btn-facebook" href="#"><i
@@ -102,7 +102,7 @@
                                 <a class="btn btn-social-icon btn-round btn-instagram" href="#"><i
                                         class="fa fa-instagram"></i></a>
                             </p>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>

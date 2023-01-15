@@ -22,7 +22,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label class="form-label">Name</label>
-                                        <input type="text" name="name"
+                                        <input type="text" name="name" value="{{old('name')}}"
                                             class="form-control @error('name') is-invalid @enderror" placeholder="Name">
                                         @error('name')
                                             <span class="invalid-feedback" role="alert">
@@ -36,7 +36,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label class="form-label">E-mail</label>
-                                        <input type="text" name="email"
+                                        <input type="text" name="email" value="{{old('email')}}"
                                             class="form-control @error('email') is-invalid @enderror" placeholder="E-mail">
                                         @error('email')
                                             <span class="invalid-feedback" role="alert">
