@@ -16,8 +16,9 @@ class CreateCustomersTable extends Migration
         Schema::create('customers', function (Blueprint $table) {
             $table->id();
             $table->foreignId('organization_id')->nullable()->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
-            $table->string("name");
-            $table->bigInteger("mobile");
+            $table->string("customer_type")->default(1); //1 - bussiness and 2. consumer
+            $table->string("name")->nullable();
+            $table->bigInteger("mobile")->nullable();
             $table->string('email')->nullable();
             $table->string('company_name')->nullable();
             $table->bigInteger('company_phone')->nullable();

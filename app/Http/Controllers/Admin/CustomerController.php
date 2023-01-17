@@ -48,7 +48,7 @@ class CustomerController extends Controller
             $request->merge([
                 'organization_id' => auth()->user()->hasRole(Role::SP) ? Auth::user()->id : auth()->user()->getUserDetails->organization_id,
                 "newsletter" => $request->newsletter == "on" ? true : false,
-                "marketing_permission" => $request->marketing_permission == 'on' ? true : false
+                "marketing_permission" => $request->marketing_permission == 'on' ? true : false,
             ]);
             $customer = Customer::create($request->all());
 
@@ -105,6 +105,7 @@ class CustomerController extends Controller
             if ($customer) {
                 $customer->organization_id = auth()->user()->hasRole(Role::SP) ? Auth::user()->id : auth()->user()->getUserDetails->organization_id;
                 $customer->name = $request->name;
+                $customer->customer_type = $request->customer_type;
                 $customer->email = $request->email;
                 $customer->mobile = $request->mobile;
                 $customer->company_name = $request->company_name;

@@ -19,12 +19,24 @@
                             <h4 class="box-title text-info mb-0"><i class="ti-user me-15"></i> Personal Info</h4>
                             <hr class="my-15">
                             <div class="row">
-                                <div class="col-md-12">
+                                <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="form-label">Name</label>
-                                        <input type="text" name="name" value="{{old('name')}}"
+                                        <input type="text" name="name" value="{{ old('name') }}"
                                             class="form-control @error('name') is-invalid @enderror" placeholder="Name">
                                         @error('name')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label">E-mail</label>
+                                        <input type="text" name="email" value="{{ old('email') }}"
+                                            class="form-control @error('email') is-invalid @enderror" placeholder="E-mail">
+                                        @error('email')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
@@ -35,20 +47,8 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label class="form-label">E-mail</label>
-                                        <input type="text" name="email" value="{{old('email')}}"
-                                            class="form-control @error('email') is-invalid @enderror" placeholder="E-mail">
-                                        @error('email')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
                                         <label class="form-label">Mobile</label>
-                                        <input type="text" name="mobile" value="{{old('mobile')}}"
+                                        <input type="text" name="mobile" value="{{ old('mobile') }}"
                                             class="form-control @error('mobile') is-invalid @enderror" placeholder="Phone">
                                         @error('mobile')
                                             <span class="invalid-feedback" role="alert">
@@ -57,6 +57,30 @@
                                         @enderror
                                     </div>
                                 </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label">Social Security Number</label>
+                                        <input type="text" name="social_security_no"
+                                            value="{{ old('social_security_no') }}"
+                                            class="form-control @error('social_security_no') is-invalid @enderror"
+                                            placeholder="Social Security Number">
+                                        @error('social_security_no')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Address</label>
+                                <textarea rows="5" name="address" class="form-control @error('address') is-invalid @enderror"
+                                    placeholder="Address">{{ old('address') }}</textarea>
+                                @error('address')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                             <h4 class="box-title text-info mb-0 mt-20"><i class="ti-save me-15"></i> Requirements</h4>
                             <hr class="my-15">
@@ -73,10 +97,10 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label class="form-label">Liscenses</label>
-                                        <input type="text" name="liscense_no" value="{{old('liscense_no')}}"
+                                        <label class="form-label">Licenses</label>
+                                        <input type="text" name="liscense_no" value="{{ old('liscense_no') }}"
                                             class="form-control @error('liscense_no') is-invalid @enderror"
-                                            placeholder="Liscense Number">
+                                            placeholder="Licenses Number">
                                         @error('liscense_no')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -92,8 +116,9 @@
                                             <div class="input-group-addon">
                                                 <i class="fa fa-calendar"></i>
                                             </div>
-                                            <input type="text" name="valid_until" class="form-control pull-right" value="{{old('valid_until')}}"
-                                                data-date-format="dd-mm-yyyy" id="datepicker">
+                                            <input type="text" name="valid_until" class="form-control pull-right"
+                                                value="{{ old('valid_until') }}" data-date-format="dd-mm-yyyy"
+                                                id="datepicker">
                                             @error('valid_until')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -105,25 +130,14 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label class="form-label">Social Security Number</label>
-                                        <input type="text" name="social_security_no" value="{{old('social_security_no')}}"
-                                            class="form-control @error('social_security_no') is-invalid @enderror"
-                                            placeholder="Social Security Number">
-                                        @error('social_security_no')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
                                         <label class="form-label">Language</label>
                                         <select class="form-control select2  @error('language_id') is-invalid @enderror"
                                             name="language_id" style="width: 100%;">
                                             @if ($language)
                                                 @foreach ($language as $item)
-                                                    <option value={{ $item->id }} {{old('language_id') == $item->id ? 'selected' :''}}>{{ $item->name }}</option>
+                                                    <option value={{ $item->id }}
+                                                        {{ old('language_id') == $item->id ? 'selected' : '' }}>
+                                                        {{ $item->name }}</option>
                                                 @endforeach
                                             @else
                                                 <option value="">NO Language found</option>
@@ -141,10 +155,14 @@
                                         <label class="form-label">Location</label>
                                         <select class="form-control select2  @error('location') is-invalid @enderror"
                                             name="location" style="width: 100%;">
-                                            <option value="Lahti" {{old('location') == 'Lahti' ? 'selected' :''}}>Lahti</option>
-                                            <option value="Levi" {{old('location') == 'Levi' ? 'selected' :''}}>Levi</option>
-                                            <option value="Rovaniemi" {{old('location') == 'Rovaniemi' ? 'selected' :''}}>Rovaniemi</option>
-                                            <option value="Helsinki" {{old('location') == 'Helsinki' ? 'selected' :''}}>Helsinki</option>
+                                            <option value="Lahti" {{ old('location') == 'Lahti' ? 'selected' : '' }}>Lahti
+                                            </option>
+                                            <option value="Levi" {{ old('location') == 'Levi' ? 'selected' : '' }}>Levi
+                                            </option>
+                                            <option value="Rovaniemi"
+                                                {{ old('location') == 'Rovaniemi' ? 'selected' : '' }}>Rovaniemi</option>
+                                            <option value="Helsinki" {{ old('location') == 'Helsinki' ? 'selected' : '' }}>
+                                                Helsinki</option>
                                         </select>
                                         @error('location')
                                             <span class="invalid-feedback" role="alert">
@@ -156,21 +174,12 @@
 
                             </div>
                             <div class="form-group">
-                                <label class="form-label">Address</label>
-                                <textarea rows="5" name="address" class="form-control @error('address') is-invalid @enderror"
-                                    placeholder="Company Address">{{old('address')}}</textarea>
-                                @error('address')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                            <div class="form-group">
 
                                 <div class="row">
                                     <div class="col-md-4 m-2">
                                         <div class="form-group">
-                                            <input type="checkbox" id="md_checkbox_3" {{old('expired') == 'on' ? 'checked' :''}}
+                                            <input type="checkbox" id="md_checkbox_3"
+                                                {{ old('expired') == 'on' ? 'checked' : '' }}
                                                 class="chk-col-success @error('expired') is-invalid @enderror"
                                                 name="expired" />
                                             <label for="md_checkbox_3">Expired</label>

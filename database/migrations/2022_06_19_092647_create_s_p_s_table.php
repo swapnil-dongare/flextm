@@ -32,6 +32,8 @@ class CreateSPSTable extends Migration
             $table->string('country_invoice_address')->nullable();
             $table->string('language_id')->nullable()->references('id')->on('languages')->onDelete('cascade')->onUpdate('cascade');
             $table->boolean('free_trial')->default(false);
+            $table->date('free_trial_end_date')->nullable();
+
             $table->string('subscription')->nullable();
             $table->text('logo_url')->nullable();
             $table->softDeletes();

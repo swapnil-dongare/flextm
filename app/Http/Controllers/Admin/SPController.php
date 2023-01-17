@@ -176,6 +176,7 @@ class SPController extends Controller
             $sp->language_id = $request->language_id;
             $sp->free_trial = $request->free_trial == "on" ? true : false;
             $sp->subscription = $request->subscription;
+            $sp->free_trial_end_date = $request->free_trial_end_date;
             $sp->logo_url = $url != null ? $url : $sp->logo_url;
             $sp->update();
 

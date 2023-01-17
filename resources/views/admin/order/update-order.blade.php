@@ -103,7 +103,7 @@
                                             @if ($language)
                                                 @foreach ($language as $item)
                                                     <option value={{ $item->id }}
-                                                        {{ $order->language_id == $item->id ? 'selected' : '' }}>
+                                                        {{ $order->language_id == $item->id || $item->slug == 'fi' ? 'selected' : '' }}>
                                                         {{ $item->name }}</option>
                                                 @endforeach
                                             @else
@@ -299,7 +299,7 @@
                                         <label class="form-label">Head Count</label>
                                         <input type="text" name="head_count" value="{{ $order->head_count }}"
                                             class="form-control @error('head_count') is-invalid @enderror"
-                                            placeholder="head count">
+                                            placeholder="Amount of passangers">
                                         @error('head_count')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -332,7 +332,7 @@
                                             </option>
                                             <option value="10" {{ $order->tax_rate == '10' ? 'selected' : '' }}>10%
                                             </option>
-                                            <option value="20" {{ $order->tax_rate == '20' ? 'selected' : '' }}>20%
+                                            <option value="24" {{ $order->tax_rate == '24' ? 'selected' : '' }}>24%
                                             </option>
                                         </select>
                                         @error('tax_rate')

@@ -19,12 +19,12 @@ class CreateOrderRequestsTable extends Migration
             $table->foreignId('tm_id')->nullable()->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->foreignId('organization_id')->nullable()->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->string('request_type')->default('Order');
-            $table->string('start_location');
-            $table->date('start_date');
+            $table->string('start_location')->nullable();
+            $table->date('start_date')->nullable();
             $table->time('start_time')->nullable();
             $table->time('present_in_location')->nullable();
-            $table->string('end_location');
-            $table->date('end_date');
+            $table->string('end_location')->nullable();
+            $table->date('end_date')->nullable();
             $table->time('end_time')->nullable();
             $table->time('present_in_service_hall')->nullable();
             $table->bigInteger('head_count')->nullable();

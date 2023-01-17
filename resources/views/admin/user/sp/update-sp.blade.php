@@ -123,7 +123,8 @@
                                             <div class="form-group">
                                                 {{-- <label class="form-label">Post Address</label> --}}
                                                 <input type="text" name="post_address" value="{{ $sp->post_address }}"
-                                                    class="form-control @error('post_address') is-invalid @enderror" placeholder="Post Address">
+                                                    class="form-control @error('post_address') is-invalid @enderror"
+                                                    placeholder="Post Address">
                                                 @error('post_address')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
@@ -133,7 +134,8 @@
                                             <div class="form-group">
                                                 {{-- <label class="form-label">Zip Code</label> --}}
                                                 <input type="text" name="zipcode" value="{{ $sp->zipcode }}"
-                                                    class="form-control @error('zipcode') is-invalid @enderror" placeholder="Zip Code">
+                                                    class="form-control @error('zipcode') is-invalid @enderror"
+                                                    placeholder="Zip Code">
                                                 @error('zipcode')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
@@ -143,7 +145,8 @@
                                             <div class="form-group">
                                                 {{-- <label class="form-label">City</label> --}}
                                                 <input type="text" name="city" value="{{ $sp->city }}"
-                                                    class="form-control @error('city') is-invalid @enderror" placeholder="City">
+                                                    class="form-control @error('city') is-invalid @enderror"
+                                                    placeholder="City">
                                                 @error('city')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
@@ -153,7 +156,8 @@
                                             <div class="form-group">
                                                 {{-- <label class="form-label">country</label> --}}
                                                 <input type="text" name="country" value="{{ $sp->country }}"
-                                                    class="form-control @error('country') is-invalid @enderror" placeholder="Country">
+                                                    class="form-control @error('country') is-invalid @enderror"
+                                                    placeholder="Country">
                                                 @error('country')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
@@ -178,8 +182,10 @@
                                             </div>
                                             <div class="form-group">
                                                 {{-- <label class="form-label">Post Address</label> --}}
-                                                <input type="text" name="post_invoice_address" value="{{$sp->post_invoice_address}}"
-                                                    class="form-control @error('post_invoice_address') is-invalid @enderror" placeholder="Post Address">
+                                                <input type="text" name="post_invoice_address"
+                                                    value="{{ $sp->post_invoice_address }}"
+                                                    class="form-control @error('post_invoice_address') is-invalid @enderror"
+                                                    placeholder="Post Address">
                                                 @error('post_invoice_address')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
@@ -188,8 +194,10 @@
                                             </div>
                                             <div class="form-group">
                                                 {{-- <label class="form-label">Zip Code</label> --}}
-                                                <input type="text" name="zipcode_invoice_address" value="{{$sp->zipcode_invoice_address}}"
-                                                    class="form-control @error('zipcode_invoice_address') is-invalid @enderror" placeholder="Zip Code">
+                                                <input type="text" name="zipcode_invoice_address"
+                                                    value="{{ $sp->zipcode_invoice_address }}"
+                                                    class="form-control @error('zipcode_invoice_address') is-invalid @enderror"
+                                                    placeholder="Zip Code">
                                                 @error('zipcode_invoice_address')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
@@ -198,8 +206,10 @@
                                             </div>
                                             <div class="form-group">
                                                 {{-- <label class="form-label">City</label> --}}
-                                                <input type="text" name="city_invoice_address" value="{{$sp->city_invoice_address}}"
-                                                    class="form-control @error('city_invoice_address') is-invalid @enderror" placeholder="City">
+                                                <input type="text" name="city_invoice_address"
+                                                    value="{{ $sp->city_invoice_address }}"
+                                                    class="form-control @error('city_invoice_address') is-invalid @enderror"
+                                                    placeholder="City">
                                                 @error('city_invoice_address')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
@@ -208,8 +218,10 @@
                                             </div>
                                             <div class="form-group">
                                                 {{-- <label class="form-label">country</label> --}}
-                                                <input type="text" name="country_invoice_address" value="{{$sp->country_invoice_address}}"
-                                                    class="form-control @error('country_invoice_address') is-invalid @enderror" placeholder="Country">
+                                                <input type="text" name="country_invoice_address"
+                                                    value="{{ $sp->country_invoice_address }}"
+                                                    class="form-control @error('country_invoice_address') is-invalid @enderror"
+                                                    placeholder="Country">
                                                 @error('country_invoice_address')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
@@ -220,11 +232,12 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group">
+                            {{-- <div class="form-group"> --}}
 
-                                <div class="col-md-6">
-                                    <input type="checkbox" id="md_checkbox_4" name="free_trial"
-                                        value="{{ $sp->free_trial }}"
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <input type="checkbox" id="md_checkbox_4" name="free_trial" {{$sp->free_trial ? 'checked' :''}}
+                                        value=""
                                         class="chk-col-info @error('free_trial') is-invalid @enderror" />
                                     <label for="md_checkbox_4">Free Trial</label>
                                     @error('free_trial')
@@ -233,19 +246,36 @@
                                         </span>
                                     @enderror
                                 </div>
-                                <div class="col-md-6">
-                                    <input type="checkbox" id="md_checkbox_3"
-                                        class="chk-col-success @error('subscription') is-invalid @enderror"
-                                        name="subscription" value="{{ $sp->subscription }}" />
-                                    <label for="md_checkbox_3">Subscription</label>
-                                    @error('subscription')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
+                                <div class="col-md-6" id="freeTrialDiv" {{$sp->free_trial ? '' :'hidden'}} >
+                                    <label class="form-label">Free Trial End Date</label>
+                                    <div class="input-group date">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-calendar"></i>
+                                        </div>
+                                        <input type="text" name="free_trial_end_date"
+                                            class="form-control datepicker pull-right @error('free_trial_end_date') is-invalid @enderror"
+                                            value="{{ $sp->free_trial_end_date }}" data-date-format="dd-mm-yyyy">
+                                        @error('free_trial_end_date')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
                                 </div>
-
                             </div>
+                            <div class="col-md-6">
+                                <input type="checkbox" id="md_checkbox_3"
+                                    class="chk-col-success @error('subscription') is-invalid @enderror"
+                                    name="subscription" value="{{ $sp->subscription }}" />
+                                <label for="md_checkbox_3">Subscription</label>
+                                @error('subscription')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+
+                            {{-- </div> --}}
                             <div class="row">
                                 <div class="form-group">
                                     <div class="row">
@@ -298,6 +328,19 @@
                     reader.readAsDataURL(file);
                 }
             });
+            $('.datepicker').datepicker({
+                format: 'dd-mm-yyyy',
+                // startDate: '-3d'
+            });
+
+            $('#md_checkbox_4').change(function(){
+                console.log($(this).is(':checked'));
+                if($(this).is(':checked')){
+                    $('#freeTrialDiv').removeAttr('hidden')
+                }else{
+                    $('#freeTrialDiv').attr('hidden',true)
+                }
+            })
         })
     </script>
 @endsection

@@ -37,6 +37,7 @@ class UpdateCustomerRequest extends FormRequest
             "company_city" => ['string', 'nullable'],
             "company_country" => ['string', 'nullable'],
             "newsletter" => ['nullable'],
+            "customer_type" => ['nullable'],
             "marketing_permission" => ['nullable']
         ];
     }

@@ -370,6 +370,19 @@
                                 </li>
                             @endif
 
+                            <li class="@yield('sidebar-support')">
+                                <a href="{{ route('home') }}">
+                                    <i data-feather="phone-call"></i>
+                                    Support
+                                </a>
+                            </li>
+                            <li class="@yield('sidebar-privacy-policy')">
+                                <a href="{{ route('home') }}">
+                                    <i data-feather="lock"></i>
+                                    Data Privacy Policy
+                                </a>
+                            </li>
+
                         </ul>
 
                         <div class="sidebar-widgets" style="position: fixed;bottom:0;">

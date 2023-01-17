@@ -29,7 +29,8 @@ class SP extends Model
         "language_id",
         "free_trial",
         "subscription",
-        "logo_url"
+        "logo_url",
+        "free_trial_end_date"
     ];
 
     public function getAdminDetails()

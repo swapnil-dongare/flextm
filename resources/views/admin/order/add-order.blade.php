@@ -97,7 +97,7 @@
                                             name="language_id" style="width: 100%;">
                                             @if ($language)
                                                 @foreach ($language as $item)
-                                                    <option value={{ $item->id }} {{old('language_id') == $item->id ? 'selected' : ''}}>{{ $item->name }}</option>
+                                                    <option value={{ $item->id }} {{old('language_id') == $item->id || $item->slug == 'fi' ? 'selected' : ''}} >{{ $item->name }}</option>
                                                 @endforeach
                                             @else
                                                 <option value="">NO Language found</option>
@@ -274,7 +274,7 @@
                                         <label class="form-label">Amount of passangers</label>
                                         <input type="text" name="head_count" value="{{old('head_count')}}"
                                             class="form-control @error('head_count') is-invalid @enderror"
-                                            placeholder="head count">
+                                            placeholder="Amount of passangers">
                                         @error('head_count')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -304,7 +304,7 @@
                                             style="width: 100%;">
                                             <option value="0" {{old('tax_rate') == '0' ? 'selected' : ''}}>0%</option>
                                             <option value="10" {{old('tax_rate') == '10' ? 'selected' : ''}}>10%</option>
-                                            <option value="20" {{old('tax_rate') == '20' ? 'selected' : ''}}>20%</option>
+                                            <option value="24" {{old('tax_rate') == '24' ? 'selected' : ''}}>24%</option>
                                         </select>
                                         @error('tax_rate')
                                             <span class="invalid-feedback" role="alert">

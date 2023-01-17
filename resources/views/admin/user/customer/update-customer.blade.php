@@ -20,7 +20,22 @@
                             <h4 class="box-title text-info mb-0"><i class="ti-user me-15"></i> Personal Info</h4>
                             <hr class="my-15">
                             <div class="row">
-                                <div class="col-md-12">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label">Select Customer</label>
+                                        <select class="form-control select2  @error('customer_type') is-invalid @enderror"
+                                            name="customer_type" id="customer_type" style="width: 100%;">
+                                            <option value="1">Bussiness</option>
+                                            <option value="2">Consumer</option>
+                                        </select>
+                                        @error('customer_type')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="form-label">Name</label>
                                         <input type="text" name="name"
@@ -64,49 +79,51 @@
                             </div>
                             <h4 class="box-title text-info mb-0 mt-20"><i class="ti-save me-15"></i> Requirements</h4>
                             <hr class="my-15">
-                            <div class="form-group">
-                                <label class="form-label">Company</label>
-                                <input type="text" name="company_name"
-                                    class="form-control @error('company_name') is-invalid @enderror"
-                                    placeholder="Company Name" value="{{ $customer->company_name }}">
-                                @error('company_name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="form-label">Company Contact Number</label>
-                                        <input type="text" name="company_phone"
-                                            class="form-control @error('company_phone') is-invalid @enderror"
-                                            placeholder="Contact Number" value="{{ $customer->company_phone }}">
-                                        @error('company_phone')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
+                            <div id="companyReqDiv" {{ $customer->customer_type == 2 ? 'hidden' : '' }}>
+                                <div class="form-group">
+                                    <label class="form-label">Company</label>
+                                    <input type="text" name="company_name"
+                                        class="form-control @error('company_name') is-invalid @enderror"
+                                        placeholder="Company Name" value="{{ $customer->company_name }}">
+                                    @error('company_name')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="form-label">VAT-ID</label>
-                                        <input type="text" name="vat_id"
-                                            class="form-control @error('vat_id') is-invalid @enderror" placeholder="VAT-ID"
-                                            value="{{ $customer->vat_id }}">
-                                        @error('vat_id')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="form-label">Company Contact Number</label>
+                                            <input type="text" name="company_phone"
+                                                class="form-control @error('company_phone') is-invalid @enderror"
+                                                placeholder="Contact Number" value="{{ $customer->company_phone }}">
+                                            @error('company_phone')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="form-label">VAT-ID</label>
+                                            <input type="text" name="vat_id"
+                                                class="form-control @error('vat_id') is-invalid @enderror"
+                                                placeholder="VAT-ID" value="{{ $customer->vat_id }}">
+                                            @error('vat_id')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="form-label">Address</label>
                                 <textarea rows="5" name="company_address" class="form-control @error('company_address') is-invalid @enderror"
-                                    placeholder="Company Address" value="">{{ $customer->company_address }}</textarea>
+                                    placeholder="Address" value="">{{ $customer->company_address }}</textarea>
                                 @error('company_address')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -199,4 +216,16 @@
             </div>
         </div>
     </div>
+@endsection
+@section('footer-script')
+    <script>
+        $('#customer_type').change(function() {
+
+            if ($(this).val() == 2) {
+                $('#companyReqDiv').attr('hidden', true)
+            } else {
+                $('#companyReqDiv').removeAttr('hidden')
+            }
+        })
+    </script>
 @endsection

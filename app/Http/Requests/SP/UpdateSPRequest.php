@@ -42,6 +42,7 @@ class UpdateSPRequest extends FormRequest
             "language_id" => ['nullable','exists:languages,id'],
             "free_trial" => ['nullable'],
             "subscription" => ['nullable'],
+            "free_trial_end_date" => ['nullable'],
         ];
     }
 }
