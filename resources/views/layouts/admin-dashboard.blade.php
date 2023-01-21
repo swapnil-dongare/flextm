@@ -390,6 +390,12 @@
                                 </li>
                             @endif
 
+                            <li class="@yield('sidebar-report-calendar')">
+                                <a href="{{ route('report-calendar') }}">
+                                    <i data-feather="calendar"></i>
+                                   Calendar
+                                </a>
+                            </li>
                             <li class="@yield('sidebar-support')">
                                 <a href="{{ route('home') }}">
                                     <i data-feather="phone-call"></i>
