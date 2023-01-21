@@ -10,7 +10,7 @@ use App\Http\Controllers\Admin\SPController;
 use App\Http\Controllers\Admin\TMController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Facades\Session;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,3 +49,12 @@ Route::group(['prefix' => 'admin', "middleware" => "auth"], function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/changeLanguage/{lang}', function ($lang) {
+    try {
+        Session::put('locale', $lang);
+        return redirect()->back();
+    } catch (\Throwable $th) {
+        return redirect()->back()->with("full-top-error", 'Internal Server error');
+    }
+})->name('changeLanguage');

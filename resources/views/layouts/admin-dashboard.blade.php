@@ -90,7 +90,7 @@
                             </a>
                         </li>
                         <!-- Notifications -->
-                        <li class="dropdown notifications-menu">
+                        {{-- <li class="dropdown notifications-menu">
                             <a href="#" class="waves-effect waves-light dropdown-toggle btn-info-light"
                                 data-bs-toggle="dropdown" title="Notifications">
                                 <i data-feather="bell"></i>
@@ -160,7 +160,7 @@
                                     <a href="#">View all</a>
                                 </li>
                             </ul>
-                        </li>
+                        </li> --}}
 
                         <!-- Control Sidebar Toggle Button
                         <li class="btn-group nav-item">
@@ -195,6 +195,26 @@
                                     </form>
                                 </li>
                             </ul>
+                        </li>
+
+
+                        <li class="btn-group nav-item ">
+                            @php
+                                $language = \App\Models\Language::all();
+                            @endphp
+                            <div class="form-group mt-4 pull-right">
+                                <select class="form-control languageSelect" name="language_id" style="width: 50%;">
+                                    @if ($language)
+                                        @foreach ($language as $item)
+                                            <option value={{ $item->slug }}
+                                                {{ $item->slug == session()->get('locale') ? 'selected' : (session()->get('locale') == 'fi' ? 'selected' : '') }}>
+                                                {{ $item->name }}</option>
+                                        @endforeach
+                                    @else
+                                        <option value="en">English</option>
+                                    @endif
+                                </select>
+                            </div>
                         </li>
                     </ul>
                 </div>
@@ -235,31 +255,31 @@
                                 </ul>
                             </li> --}}
                             @if (auth()->user()->hasAnyDirectPermission([
-                                    'list-customer',
-                                    'create-customer',
-                                    'edit-customer',
-                                    'delete-customer',
-                                    'list-sp',
-                                    'create-sp',
-                                    'edit-sp',
-                                    'delete-sp',
-                                    'list-tm',
-                                    'create-tm',
-                                    'edit-tm',
-                                    'delete-tm',
-                                    'list-driver',
-                                    'create-driver',
-                                    'edit-driver',
-                                    'delete-driver',
-                                    'list-equipment',
-                                    'create-equipment',
-                                    'edit-equipment',
-                                    'delete-equipment',
-                                    'list-business-place',
-                                    'create-business-place',
-                                    'edit-business-place',
-                                    'delete-business-place',
-                                ]))
+                                        'list-customer',
+                                        'create-customer',
+                                        'edit-customer',
+                                        'delete-customer',
+                                        'list-sp',
+                                        'create-sp',
+                                        'edit-sp',
+                                        'delete-sp',
+                                        'list-tm',
+                                        'create-tm',
+                                        'edit-tm',
+                                        'delete-tm',
+                                        'list-driver',
+                                        'create-driver',
+                                        'edit-driver',
+                                        'delete-driver',
+                                        'list-equipment',
+                                        'create-equipment',
+                                        'edit-equipment',
+                                        'delete-equipment',
+                                        'list-business-place',
+                                        'create-business-place',
+                                        'edit-business-place',
+                                        'delete-business-place',
+                                    ]))
                                 <li class="treeview ">
                                     <a href="#">
                                         <i data-feather="monitor"></i>
@@ -343,11 +363,11 @@
                             @endif
 
                             @if (auth()->user()->hasAnyDirectPermission([
-                                    'list-order-request',
-                                    'create-order-request',
-                                    'edit-order-request',
-                                    'delete-order-request',
-                                ]))
+                                        'list-order-request',
+                                        'create-order-request',
+                                        'edit-order-request',
+                                        'delete-order-request',
+                                    ]))
                                 <li class="treeview">
                                     <a href="#">
                                         <i data-feather="truck"></i>
@@ -410,7 +430,8 @@
                     @if (session()->has('full-top-success'))
                         <div class="myadmin-alert myadmin-alert-icon myadmin-alert-click alert-success myadmin-alert-top alerttop minimize-5"
                             style="display: block"> <i class="ti-user"></i> {{ session()->get('full-top-success') }}
-                            <a href="#" class="closed">&times;</a> </div>
+                            <a href="#" class="closed">&times;</a>
+                        </div>
                     @elseif (session()->has('full-top-error'))
                         <div class="myadmin-alert myadmin-alert-icon myadmin-alert-click alert-danger myadmin-alert-top alerttop minimize-5"
                             style="display: block">
@@ -439,7 +460,7 @@
             &copy;
             <script>
                 document.write(new Date().getFullYear())
-            </script> <a href="{{config('app.url')}}">{{config('app.name')}}</a>. All Rights
+            </script> <a href="{{ config('app.url') }}">{{ config('app.name') }}</a>. All Rights
             Reserved.
         </footer>
 
@@ -759,6 +780,11 @@
     <script>
         $(document).ready(function() {
             $('.minimize-5').fadeOut(10000);
+            $('.languageSelect').change(function() {
+                url = "/changeLanguage/" + $(this).val();
+                console.log(url)
+                window.location.href = url;
+            })
         })
     </script>
     @yield('footer-script')
