@@ -57,6 +57,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/changeLanguage/{lang}', function ($lang) {
     try {
         Session::put('locale', $lang);
+        // dd(Session::all());
         return redirect()->back();
     } catch (\Throwable $th) {
         return redirect()->back()->with("full-top-error", 'Internal Server error');

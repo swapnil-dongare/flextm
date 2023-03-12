@@ -1,13 +1,13 @@
 @extends('layouts.admin-dashboard')
 @section('title')
-    Admin : Driver
+    {{__('Admin')}} : {{__('Driver')}}
 @endsection
 @section('sidebar-driver')
     active
 @endsection
 
 @section('main-content')
-    <h1>Driver</h1>
+    <h1>{{__('Driver')}}</h1>
     <div class="container">
         <div class="row">
             <div class="col-12 col-lg-12">
@@ -15,7 +15,7 @@
                     <div class="box-header with-border">
                         {{-- <h4 class="box-title">Table head options</h4> --}}
                         @can('create-driver')
-                            <a href="{{ route('driver.create') }}" class="btn btn-info" style="float:right">Add new driver
+                            <a href="{{ route('driver.create') }}" class="btn btn-info" style="float:right">{{__('Add new driver')}}
                                 <i class="fa fa-user-plus" aria-hidden="true"></i></a>
                         @endcan
                     </div>
@@ -26,12 +26,12 @@
                                 <thead class="table-dark">
                                     <tr>
                                         <th scope="col">#</th>
-                                        <th scope="col">Name</th>
-                                        <th scope="col">Mobile</th>
-                                        <th scope="col">Email</th>
-                                        <th scope="col">Licenses</th>
-                                        <th scope="col">Valid</th>
-                                        <th scope="col">Social Sec. No.</th>
+                                        <th scope="col">{{__('Name')}}</th>
+                                        <th scope="col">{{__('Mobile')}}</th>
+                                        <th scope="col">{{__('E-mail')}}</th>
+                                        <th scope="col">{{__('Licenses')}}</th>
+                                        <th scope="col">{{__('Valid')}}</th>
+                                        <th scope="col">{{__('Social Sec. No.')}}</th>
                                         <th scope="col"></th>
 
                                     </tr>
@@ -86,7 +86,7 @@
                                             <td></td>
                                             <td></td>
                                             <td></td>
-                                            <td>No Data found</td>
+                                            <td>{{__('No data found')}}</td>
                                             <td></td>
                                             <td></td>
                                             <td></td>

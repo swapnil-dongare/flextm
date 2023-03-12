@@ -1,20 +1,20 @@
 @extends('layouts.admin-dashboard')
 @section('title')
-    Admin : Customer
+    {{__('Admin')}} : {{__('Manage Customer')}}
 @endsection
 @section('sidebar-customer')
     active
 @endsection
 
 @section('main-content')
-    <h1>Manage Customers</h1>
+    <h1>{{__('Manage Customer')}}</h1>
     <div class="container">
         <div class="row">
             <div class="col-12 col-lg-12">
                 <div class="box">
                     <div class="box-header with-border">
                         @can('create-customer')
-                            <a href="{{ route('get-add-customer') }}" class="btn btn-info" style="float:right">Add new Customer
+                            <a href="{{ route('get-add-customer') }}" class="btn btn-info" style="float:right">{{__('Add new Customer')}}
                                 <i class="fa fa-user-plus" aria-hidden="true"></i></a>
                         @endcan
                     </div>
@@ -25,12 +25,12 @@
                                 <thead class="table-dark">
                                     <tr>
                                         <th scope="col">#</th>
-                                        <th scope="col">Name</th>
-                                        <th scope="col">Mobile</th>
-                                        <th scope="col">Email</th>
-                                        <th scope="col">Company</th>
-                                        <th scope="col">Company Phone</th>
-                                        <th scope="col">VAT-ID</th>
+                                        <th scope="col">{{__('Name')}}</th>
+                                        <th scope="col">{{__('Mobile')}}</th>
+                                        <th scope="col">{{__('E-mail')}}</th>
+                                        <th scope="col">{{__('Company')}}</th>
+                                        <th scope="col">{{__('Company Phone')}}</th>
+                                        <th scope="col">{{__('VAT-ID')}}</th>
                                         <th scope="col"></th>
 
                                     </tr>
@@ -74,7 +74,7 @@
                                             <td></td>
                                             <td></td>
                                             <td></td>
-                                            <td>No Data found</td>
+                                            <td>{{__('No Data found')}}</td>
                                             <td></td>
                                             <td></td>
                                             <td></td>

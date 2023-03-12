@@ -1,21 +1,20 @@
 @extends('layouts.admin-dashboard')
 @section('title')
-    Admin : Place of Business
+    {{__('Admin')}} : {{__('Place of Business')}}
 @endsection
 @section('sidebar-business-place')
     active
 @endsection
 
 @section('main-content')
-    <h1>Place of Business</h1>
+    <h1>{{__('Place Of Business')}}</h1>
     <div class="container">
         <div class="row">
             <div class="col-12 col-lg-12">
                 <div class="box">
                     <div class="box-header with-border">
                         @can('create-business-place')
-                            <a href="{{ route('business-place.create') }}" class="btn btn-info" style="float:right">Add Place of
-                                Business
+                            <a href="{{ route('business-place.create') }}" class="btn btn-info" style="float:right">{{__('Add Place Of Business')}}
                                 <i class="fa fa-user-plus" aria-hidden="true"></i></a>
                         @endcan
                     </div>
@@ -26,7 +25,7 @@
                                 <thead class="table-dark">
                                     <tr>
                                         <th scope="col">#</th>
-                                        <th scope="col">Name</th>
+                                        <th scope="col">{{__('Name')}}</th>
                                         <th scope="col"></th>
 
                                     </tr>
@@ -70,7 +69,7 @@
                                     @else
                                         <tr style="text-align: center">
                                             <td></td>
-                                            <td>No Data found</td>
+                                            <td>{{__('No Data found')}}</td>
                                         </tr>
                                     @endif
                                 </tbody>

@@ -1,13 +1,13 @@
 @extends('layouts.admin-dashboard')
 @section('title')
-    Admin : Update  User
+    {{__("Admin")}} : {{__("Update User")}}
 @endsection
 @section('sidebar-transport-manager')
     active
 @endsection
 
 @section('main-content')
-    <h1>Update  User</h1>
+    <h1>{{__("Update User")}}</h1>
     <div class="container">
 
         <div class="row">
@@ -17,17 +17,17 @@
                         @csrf
                         <input type="hidden" name="_method" value="PUT">
                         <div class="box-body">
-                            <h4 class="box-title text-info mb-0"><i class="ti-user me-15"></i> Personal Info</h4>
+                            <h4 class="box-title text-info mb-0"><i class="ti-user me-15"></i> {{__("Personal Info")}} </h4>
                             <hr class="my-15">
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label class="form-label">Name</label>
+                                        <label class="form-label">{{__("Name")}}</label>
                                         <input type="text" name="name" value="{{ $tm->name }}"
-                                            class="form-control @error('name') is-invalid @enderror" placeholder="Name">
+                                            class="form-control @error('name') is-invalid @enderror" placeholder="{{__('Name')}}">
                                         @error('name')
                                             <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
+                                                <strong>{{ __($message) }}</strong>
                                             </span>
                                         @enderror
                                     </div>
@@ -36,12 +36,12 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label class="form-label">E-mail</label>
+                                        <label class="form-label">{{__("E-mail4")}}</label>
                                         <input type="text" name="email" value="{{ $tm->email }}"
-                                            class="form-control @error('email') is-invalid @enderror" placeholder="E-mail">
+                                            class="form-control @error('email') is-invalid @enderror" placeholder="{{__("E-mail4")}}">
                                         @error('email')
                                             <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
+                                                <strong>{{ __($message) }}</strong>
                                             </span>
                                         @enderror
                                     </div>
@@ -53,10 +53,10 @@
                         <!-- /.box-body -->
                         <div class="box-footer">
                             <button type="reset" class="btn btn-warning me-1">
-                                <i class="ti-trash"></i> Cancel
+                                <i class="ti-trash"></i> {{__("Cancel")}}
                             </button>
                             <button type="submit" class="btn btn-primary">
-                                <i class="ti-save-alt"></i> Save
+                                <i class="ti-save-alt"></i> {{__("Save")}}
                             </button>
                         </div>
                     </form>

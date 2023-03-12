@@ -1,11 +1,11 @@
 @extends('layouts.admin-dashboard')
 @section('title')
-    Dashboard : Home
+{{__("Dashboard")}} : {{__("Home")}}
 @endsection
 @section('sidebar-dashboard')
     active
 @endsection
 
 @section('main-content')
-    <h1>Dashoard</h1>
+    <h1>{{__('Dashboard')}}</h1>
 @endsection

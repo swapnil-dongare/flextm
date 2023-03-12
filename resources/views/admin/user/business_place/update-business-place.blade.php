@@ -1,13 +1,13 @@
 @extends('layouts.admin-dashboard')
 @section('title')
-    Admin : Update Business Place
+    {{__('Admin')}} : {{__("Update Business Place")}}
 @endsection
 @section('sidebar-business-place')
     active
 @endsection
 
 @section('main-content')
-    <h1>Update Business Place</h1>
+    <h1>{{__("Update Business Place")}}</h1>
     <div class="container">
 
         <div class="row">
@@ -18,9 +18,9 @@
                         <input type="hidden" name="_method" value="PUT">
                         <div class="box-body">
                             <div class="form-group">
-                                <label class="form-label">Name</label>
+                                <label class="form-label">{{__('Name')}}</label>
                                 <input type="text" name="name"
-                                    class="form-control @error('name') is-invalid @enderror" placeholder="Name" value="{{$place->name}}">
+                                    class="form-control @error('name') is-invalid @enderror" placeholder="{{__('Name')}}" value="{{$place->name}}">
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -31,10 +31,10 @@
                         <!-- /.box-body -->
                         <div class="box-footer">
                             <button type="reset" class="btn btn-warning me-1">
-                                <i class="ti-trash"></i> Cancel
+                                <i class="ti-trash"></i> {{__('Cancel')}}
                             </button>
                             <button type="submit" class="btn btn-primary">
-                                <i class="ti-save-alt"></i> Update
+                                <i class="ti-save-alt"></i> {{__('Update')}}
                             </button>
                         </div>
                     </form>

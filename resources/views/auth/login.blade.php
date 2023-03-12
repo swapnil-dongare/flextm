@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link rel="icon" href="{{asset('images/favicon.ico')}}">
 
-    <title>MindMote - Log in </title>
+    <title>MindMote - {{_("Log in")}} </title>
 
     <!-- Vendors Style-->
     <link rel="stylesheet" href="{{ asset('main/css/vendors_css.css') }}">
@@ -30,8 +30,8 @@
                     <div class="col-lg-5 col-md-5 col-12">
                         <div class="bg-white rounded10 shadow-lg">
                             <div class="content-top-agile p-20 pb-0">
-                                <h2 class="text-primary">Let's Get Started</h2>
-                                <p class="mb-0">Sign in to continue to MindMote</p>
+                                <h2 class="text-primary">{{__("Let's Get Started")}}</h2>
+                                <p class="mb-0">{{__("Sign in to continue to MindMote")}}</p>
                             </div>
                             <div class="p-40">
                                 <form action="{{ route('login') }}" method="post">
@@ -41,11 +41,11 @@
                                             <span class="input-group-text bg-transparent"><i class="ti-user"></i></span>
                                             <input type="text"
                                                 class="form-control ps-15 bg-transparent  @error('email') is-invalid @enderror"
-                                                placeholder="Username" name="email" value="{{ old('email') }}"
+                                                placeholder="{{__('Username')}}" name="email" value="{{ old('email') }}"
                                                 required autocomplete="email" autofocus>
                                             @error('email')
                                                 <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
+                                                    <strong>{{ __($message) }}</strong>
                                                 </span>
                                             @enderror
                                         </div>
@@ -57,10 +57,10 @@
                                             <input type="password"
                                                 class="form-control ps-15 bg-transparent @error('password') is-invalid @enderror"
                                                 name="password" required autocomplete="current-password"
-                                                placeholder="Password">
+                                                placeholder="{{__('Password')}}">
                                             @error('password')
                                                 <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
+                                                    <strong>{{ __($message) }}</strong>
                                                 </span>
                                             @enderror
                                         </div>
@@ -69,7 +69,7 @@
                                         <div class="col-6">
                                             <div class="checkbox">
                                                 <input type="checkbox" id="basic_checkbox_1">
-                                                <label for="basic_checkbox_1">Remember Me</label>
+                                                <label for="basic_checkbox_1">{{__("Remember Me")}}</label>
                                             </div>
                                         </div>
                                         <!-- /.col -->
@@ -81,7 +81,7 @@
                                         </div>
                                         <!-- /.col -->
                                         <div class="col-12 text-center">
-                                            <button type="submit" class="btn btn-danger mt-10">SIGN IN</button>
+                                            <button type="submit" class="btn btn-danger mt-10">{{__("SIGN IN")}}</button>
                                         </div>
                                         <!-- /.col -->
                                     </div>

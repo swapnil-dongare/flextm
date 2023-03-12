@@ -1,13 +1,13 @@
 @extends('layouts.admin-dashboard')
 @section('title')
-    Admin : Order Request
+    {{__('Admin')}} : {{__('Order Request')}}
 @endsection
 @section('sidebar-order')
     active
 @endsection
 
 @section('main-content')
-    <h1>Order Request</h1>
+    <h1>{{__('Order Request')}}</h1>
     <div class="container">
         {{-- <div class="row">
             <div class="col-12 col-lg-12">
@@ -101,11 +101,11 @@
 
         <div class="box">
             <div class="box-header with-border">
-                <h3 class="box-title">Order Request List</h3>
-                <h6 class="box-subtitle">Export data to Copy, CSV, Excel, PDF & Print
+                <h3 class="box-title">{{__('Order Request List')}}</h3>
+                <h6 class="box-subtitle">{{__('Export data to Copy, CSV, Excel, PDF & Print')}}
                 </h6>
                 @can('create-order-request')
-                    <a href="{{ route('order-request.create') }}" class="btn btn-info" style="float:right;">Create New Order
+                    <a href="{{ route('order-request.create') }}" class="btn btn-info" style="float:right;">{{__('Create New Order')}}
 
                         <i class="fa fa-user-plus" aria-hidden="true"></i></a>
                 @endcan
@@ -119,26 +119,26 @@
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">Order type</th>
-                                <th scope="col">Start Location</th>
-                                <th scope="col">Start Date</th>
-                                <th scope="col">Start Time</th>
-                                <th scope="col">Present in Location</th>
-                                <th scope="col">End Location</th>
-                                <th scope="col">End Date</th>
-                                <th scope="col">End Time</th>
+                                <th scope="col">{{__('Order type')}}</th>
+                                <th scope="col">{{__('Start Location')}}</th>
+                                <th scope="col">{{__('Start Date')}}</th>
+                                <th scope="col">{{__('Start Time')}}</th>
+                                <th scope="col">{{__('Present in Location')}}</th>
+                                <th scope="col">{{__('End Location')}}</th>
+                                <th scope="col">{{__('End Date')}}</th>
+                                <th scope="col">{{__('End Time')}}</th>
                                 {{-- <th scope="col">Present in Service Hall</th> --}}
-                                <th scope="col">Amount of passangers</th>
-                                <th scope="col">Mobility Restrictions</th>
-                                <th scope="col">Price</th>
-                                <th scope="col">Tax Rate</th>
-                                <th scope="col">Price Incl. Tax</th>
-                                <th scope="col">Invoiced</th>
-                                <th scope="col">Driver</th>
-                                <th scope="col">Equipment</th>
-                                <th scope="col">Route</th>
-                                <th scope="col">Language</th>
-                                <th scope="col">Other Wishesh</th>
+                                <th scope="col">{{__('Amount of passangers')}}</th>
+                                <th scope="col">{{__('Mobility Restrictions')}}</th>
+                                <th scope="col">{{__('Price')}}</th>
+                                <th scope="col">{{__('Tax Rate')}}</th>
+                                <th scope="col">{{__('Price Incl. Tax')}}</th>
+                                <th scope="col">{{__('Invoiced')}}</th>
+                                <th scope="col">{{__('Driver')}}</th>
+                                <th scope="col">{{__('Equipment')}}</th>
+                                <th scope="col">{{__('Route')}}</th>
+                                <th scope="col">{{__('Language')}}</th>
+                                <th scope="col">{{__('Other Wishesh')}}</th>
                                 <th scope="col"></th>
                             </tr>
                         </thead>
@@ -209,7 +209,7 @@
                                     <td></td>
                                     <td></td>
                                     <td></td>
-                                    <td>No Data found</td>
+                                    <td>{{__("No Data found")}}</td>
                                     <td></td>
                                     <td></td>
                                     <td></td>

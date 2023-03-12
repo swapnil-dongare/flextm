@@ -1,13 +1,13 @@
 @extends('layouts.admin-dashboard')
 @section('title')
-    Admin : Customer
+    {{__("Admin")}} : {{__("Customer")}}
 @endsection
 @section('sidebar-organization')
     active
 @endsection
 
 @section('main-content')
-    <h1>Customer</h1>
+    <h1>{{__("Customer")}}</h1>
     <div class="container">
         {{-- <div class="row">
             <div class="col-12 col-lg-12">
@@ -101,11 +101,11 @@
 
         <div class="box">
             <div class="box-header with-border">
-                <h3 class="box-title">Customer List</h3>
-                <h6 class="box-subtitle">Export data to Copy, CSV, Excel, PDF & Print
+                <h3 class="box-title">{{__('Customer List')}}</h3>
+                <h6 class="box-subtitle">{{__("Export data to Copy, CSV, Excel, PDF & Print")}}
                 </h6>
                 @can('create-sp')
-                    <a href="{{ route('organization.create') }}" class="btn btn-info" style="float:right;">Add Customer
+                    <a href="{{ route('organization.create') }}" class="btn btn-info" style="float:right;">{{__("Add Customer")}}
                         <i class="fa fa-user-plus" aria-hidden="true"></i></a>
                 @endcan
 
@@ -118,12 +118,12 @@
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">Name</th>
-                                <th scope="col">Mobile</th>
-                                <th scope="col">Email</th>
-                                <th scope="col">Country</th>
-                                <th scope="col">Free Trial</th>
-                                <th scope="col">VAT-ID</th>
+                                <th scope="col">{{__("Name")}}</th>
+                                <th scope="col">{{__("Mobile")}}</th>
+                                <th scope="col">{{__("E-mail")}}</th>
+                                <th scope="col">{{__("Country")}}</th>
+                                <th scope="col">{{__("Free Trial")}}</th>
+                                <th scope="col">{{__("VAT-ID")}}</th>
                                 <th scope="col"></th>
                             </tr>
                         </thead>
@@ -172,7 +172,7 @@
                                     <td></td>
                                     <td></td>
                                     <td></td>
-                                    <td>No Data found</td>
+                                    <td>{{__("No Data found")}}</td>
                                     <td></td>
                                     <td></td>
                                     <td></td>

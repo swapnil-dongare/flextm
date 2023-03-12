@@ -1,13 +1,13 @@
 @extends('layouts.admin-dashboard')
 @section('title')
-    Dashboard : Calendar
+    {{__("Dashboard")}} : {{__("Calendar")}}
 @endsection
 @section('sidebar-report-calendar')
     active
 @endsection
 
 @section('main-content')
-    <h1>Calendar Report</h1>
+    <h1>{{__("Calendar Report")}}</h1>
     <div class="row">
         <div class="col-12">
             <div class="box">

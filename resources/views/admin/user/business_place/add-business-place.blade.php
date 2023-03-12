@@ -1,13 +1,13 @@
 @extends('layouts.admin-dashboard')
 @section('title')
-    Admin : Add Business Place
+    {{__('Admin')}} : {{__('Add Business Place')}}
 @endsection
 @section('sidebar-business-place')
     active
 @endsection
 
 @section('main-content')
-    <h1>Add Business Place</h1>
+    <h1>{{__('Add Business Place')}}</h1>
     <div class="container">
 
         <div class="row">
@@ -17,12 +17,12 @@
                         @csrf
                         <div class="box-body">
                             <div class="form-group">
-                                <label class="form-label">Name</label>
+                                <label class="form-label">{{__('Name')}}</label>
                                 <input type="text" name="name"
-                                    class="form-control @error('name') is-invalid @enderror" placeholder="Name">
+                                    class="form-control @error('name') is-invalid @enderror" placeholder="{{__('Name')}}">
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                        <strong>{{ __($message) }}</strong>
                                     </span>
                                 @enderror
                             </div>
@@ -30,10 +30,10 @@
                         <!-- /.box-body -->
                         <div class="box-footer">
                             <button type="reset" class="btn btn-warning me-1">
-                                <i class="ti-trash"></i> Cancel
+                                <i class="ti-trash"></i> {{__('Cancel')}}
                             </button>
                             <button type="submit" class="btn btn-primary">
-                                <i class="ti-save-alt"></i> Save
+                                <i class="ti-save-alt"></i> {{__('Save')}}
                             </button>
                         </div>
                     </form>

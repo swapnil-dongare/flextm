@@ -1,13 +1,13 @@
 @extends('layouts.admin-dashboard')
 @section('title')
-    Admin : Update Driver
+    {{__('Admin')}} : {{__('Update Driver')}}
 @endsection
 @section('sidebar-driver')
     active
 @endsection
 
 @section('main-content')
-    <h1>Update Driver</h1>
+    <h1>{{__('Update Driver')}}</h1>
     <div class="container">
 
         <div class="row">
@@ -18,30 +18,30 @@
                         @csrf
                         <input type="hidden" name="_method" value="PUT">
                         <div class="box-body">
-                            <h4 class="box-title text-info mb-0"><i class="ti-user me-15"></i> Personal Info</h4>
+                            <h4 class="box-title text-info mb-0"><i class="ti-user me-15"></i> {{__('Personal Info')}}</h4>
                             <hr class="my-15">
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label class="form-label">Name</label>
+                                        <label class="form-label">{{__('Name')}}</label>
                                         <input type="text" name="name"
-                                            class="form-control @error('name') is-invalid @enderror" placeholder="Name"
+                                            class="form-control @error('name') is-invalid @enderror" placeholder="{{__('Name')}}"
                                             value="{{ $driver->name }}">
                                         @error('name')
                                             <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
+                                                <strong>{{ __($message) }}</strong>
                                             </span>
                                         @enderror
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label class="form-label">E-mail</label>
+                                            <label class="form-label">{{__('E-mail')}}</label>
                                             <input type="text" name="email"
-                                                class="form-control @error('email') is-invalid @enderror" placeholder="E-mail"
+                                                class="form-control @error('email') is-invalid @enderror" placeholder="{{__('E-mail')}}"
                                                 value="{{ $driver->email }}">
                                             @error('email')
                                                 <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
+                                                    <strong>{{ __($message) }}</strong>
                                                 </span>
                                             @enderror
                                         </div>
@@ -51,43 +51,43 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label class="form-label">Mobile</label>
+                                        <label class="form-label">{{__("Mobile")}}</label>
                                         <input type="text" name="mobile"
-                                            class="form-control @error('mobile') is-invalid @enderror" placeholder="Phone"
+                                            class="form-control @error('mobile') is-invalid @enderror" placeholder="{{__('Mobile')}}"
                                             value="{{ $driver->mobile }}">
                                         @error('mobile')
                                             <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
+                                                <strong>{{ __($message) }}</strong>
                                             </span>
                                         @enderror
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label class="form-label">Social Security Number</label>
+                                        <label class="form-label">{{__('Social Security Number')}}</label>
                                         <input type="text" name="social_security_no"
                                             class="form-control @error('social_security_no') is-invalid @enderror"
-                                            placeholder="Social Security Number"
+                                            placeholder="{{__('Social Security Number')}}"
                                             value="{{ $driver->social_security_no }}">
                                         @error('social_security_no')
                                             <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
+                                                <strong>{{ __($message) }}</strong>
                                             </span>
                                         @enderror
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="form-label">Address</label>
+                                <label class="form-label">{{__("Address")}}</label>
                                 <textarea rows="5" name="address" class="form-control @error('address') is-invalid @enderror"
-                                    placeholder="Address" >{{ $driver->address }}</textarea>
+                                    placeholder="{{__('Address')}}" >{{ $driver->address }}</textarea>
                                 @error('address')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                        <strong>{{ __($message) }}</strong>
                                     </span>
                                 @enderror
                             </div>
-                            <h4 class="box-title text-info mb-0 mt-20"><i class="ti-save me-15"></i> Requirements</h4>
+                            <h4 class="box-title text-info mb-0 mt-20"><i class="ti-save me-15"></i> {{__("Requirements")}} </h4>
                             <hr class="my-15">
                             {{-- <div class="form-group">
                                 <label class="form-label">Directives</label>
@@ -96,20 +96,20 @@
                                     value="{{ $driver->directive }}">
                                 @error('directive')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                        <strong>{{ __($message) }}</strong>
                                     </span>
                                 @enderror
                             </div> --}}
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label class="form-label">Licenses</label>
+                                        <label class="form-label">{{__('Licenses')}}</label>
                                         <input type="text" name="liscense_no"
                                             class="form-control @error('liscense_no') is-invalid @enderror"
-                                            placeholder="Licenses Number" value="{{ $driver->liscense_no }}">
+                                            placeholder="{{__('Licenses Number')}}" value="{{ $driver->liscense_no }}">
                                         @error('liscense_no')
                                             <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
+                                                <strong>{{ __($message) }}</strong>
                                             </span>
                                         @enderror
                                     </div>
@@ -117,7 +117,7 @@
 
                                 <div class="col-md-6">
                                     <div class="form-group" style="display: flex;margin-top:30px">
-                                        <label class="form-label " style="width: 100px">Valid until:</label>
+                                        <label class="form-label " style="width: 100px">{{__("Valid until")}}:</label>
 
                                         <div class="input-group date">
                                             <div class="input-group-addon">
@@ -128,7 +128,7 @@
                                             value="{{ $driver->valid_until }}">
                                         @error('valid_until')
                                             <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
+                                                <strong>{{ __($message) }}</strong>
                                             </span>
                                         @enderror
                                         </div>
@@ -137,7 +137,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label class="form-label">Language</label>
+                                        <label class="form-label">{{__("Language")}}</label>
                                         <select class="form-control select2  @error('language_id') is-invalid @enderror"
                                             name="language_id" style="width: 100%;">
                                             @if ($language)
@@ -145,12 +145,12 @@
                                                     <option value={{ $item->id }} {{$driver->language_id == $item->id ? 'selected':''}}>{{ $item->name }}</option>
                                                 @endforeach
                                             @else
-                                                <option value="">NO Language found</option>
+                                                <option value="">{{__("No language found")}}</option>
                                             @endif
                                         </select>
                                         @error('language_id')
                                             <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
+                                                <strong>{{ __($message) }}</strong>
                                             </span>
                                         @enderror
                                     </div>
@@ -167,7 +167,7 @@
                                         </select>
                                         @error('location')
                                             <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
+                                                <strong>{{ __($message) }}</strong>
                                             </span>
                                         @enderror
                                     </div>
@@ -182,10 +182,10 @@
                                             <input type="checkbox" id="md_checkbox_3"
                                                 class="chk-col-success @error('expired') is-invalid @enderror"
                                                 name="expired" @if ($driver->expired) checked @endif />
-                                            <label for="md_checkbox_3">Expired</label>
+                                            <label for="md_checkbox_3">{{__("Expired")}}</label>
                                             @error('expired')
                                                 <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
+                                                    <strong>{{ __($message) }}</strong>
                                                 </span>
                                             @enderror
                                         </div>
@@ -195,7 +195,7 @@
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col-md-2">
-                                        <label for="image" style="margin-top: 100px">Select Image</label>
+                                        <label for="image" style="margin-top: 100px">{{__("Select Image")}}</label>
                                     </div>
                                     <div class="col-md-10 text-center">
                                         <input type="file" id="image" name="image" id="profile_image" hidden>
@@ -210,10 +210,10 @@
                         <!-- /.box-body -->
                         <div class="box-footer">
                             <button type="reset" class="btn btn-warning me-1">
-                                <i class="ti-trash"></i> Cancel
+                                <i class="ti-trash"></i> {{__('Cancel')}}
                             </button>
                             <button type="submit" class="btn btn-primary">
-                                <i class="ti-save-alt"></i> Save
+                                <i class="ti-save-alt"></i> {{__('Save')}}
                             </button>
                         </div>
                     </form>

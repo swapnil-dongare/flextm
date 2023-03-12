@@ -1,20 +1,20 @@
 @extends('layouts.admin-dashboard')
 @section('title')
-    Admin : Manage Vehicles
+    {{__('Admin')}} : {{__('Manage Vehicles')}}
 @endsection
 @section('sidebar-equipment')
     active
 @endsection
 
 @section('main-content')
-    <h1>Manage Vehicles</h1>
+    <h1>{{__('Manage Vehicles')}}</h1>
     <div class="container">
         <div class="row">
             <div class="col-12 col-lg-12">
                 <div class="box">
                     <div class="box-header with-border">
                         {{-- <h4 class="box-title">Table head options</h4> --}}
-                        <a href="{{ route('equipment.create') }}" class="btn btn-info" style="float:right">Add new Vehicle
+                        <a href="{{ route('equipment.create') }}" class="btn btn-info" style="float:right">{{__('Add new Vehicle')}}
                             <i class="fa fa-user-plus" aria-hidden="true"></i></a>
                     </div>
                     <!-- /.box-header -->
@@ -24,13 +24,13 @@
                                 <thead class="table-dark">
                                     <tr>
                                         <th scope="col">#</th>
-                                        <th scope="col">Reg. No.</th>
-                                        <th scope="col">Amount of Seats</th>
-                                        <th scope="col">Equipments in Vehicle</th>
-                                        <th scope="col">Reg. Year</th>
-                                        <th scope="col">Emmission Classification</th>
-                                        <th scope="col">Next Inspection</th>
-                                        <th scope="col">Place Of Bussiness</th>
+                                        <th scope="col">{{__('Reg. No.')}}</th>
+                                        <th scope="col">{{__("Amount of Seats")}}</th>
+                                        <th scope="col">{{__("Equipments in Vehicle")}}</th>
+                                        <th scope="col">{{__("Year of registration")}}</th>
+                                        <th scope="col">{{__("Emission Class")}}</th>
+                                        <th scope="col">{{__('Next Inspection')}}</th>
+                                        <th scope="col">{{__('Place Of Bussiness')}}</th>
                                         <th scope="col"></th>
 
                                     </tr>
@@ -83,7 +83,7 @@
                                             <td></td>
                                             <td></td>
                                             <td></td>
-                                            <td>No Data found</td>
+                                            <td>{{__("No Data found")}}</td>
                                             <td></td>
                                             <td></td>
                                             <td></td>

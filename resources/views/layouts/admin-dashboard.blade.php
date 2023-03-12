@@ -78,7 +78,7 @@
                     <ul class="nav navbar-nav">
 
                         <li class="btn-group nav-item d-lg-inline-flex d-none">
-                            <h5 class="text-primary" style="margin-top: 30px;">Welcome
+                            <h5 class="text-primary" style="margin-top: 30px;">{{__("Welcome")}}
                                 <strong class="text-danger"> {{ auth()->user()->name }}</strong>
                             </h5>
                         </li>
@@ -231,7 +231,7 @@
                             <li class="@yield('sidebar-dashboard')">
                                 <a href="{{ route('home') }}">
                                     <i data-feather="home"></i>
-                                    Dashboard
+                                    {{__("Dashboard")}}
                                 </a>
                             </li>
                             {{-- <li class="treeview">
@@ -283,7 +283,7 @@
                                 <li class="treeview ">
                                     <a href="#">
                                         <i data-feather="monitor"></i>
-                                        <span>Manage</span>
+                                        <span>{{__("Manage")}}</span>
                                         <span class="pull-right-container">
                                             <i class="fa fa-angle-right pull-right"></i>
                                         </span>
@@ -296,7 +296,7 @@
                                                         <span class="path1"></span>
                                                         <span class="path2"></span>
                                                     </i>
-                                                    Customer management
+                                                    {{__("Customer Management")}}
                                                 </a>
                                             </li>
                                         @endcan
@@ -307,7 +307,7 @@
                                                         <span class="path1"></span>
                                                         <span class="path2"></span>
                                                     </i>
-                                                    Manage Users
+                                                    {{__("Manage Users")}}
                                                 </a>
                                             </li>
                                         @endcan
@@ -319,7 +319,7 @@
                                                         <span class="path1"></span>
                                                         <span class="path2"></span>
                                                     </i>
-                                                    Manage Customers
+                                                    {{__("Manage Customers")}}
                                                 </a>
                                             </li>
                                         @endcan
@@ -330,7 +330,7 @@
                                                         <span class="path1"></span>
                                                         <span class="path2"></span>
                                                     </i>
-                                                    Manage Drivers
+                                                    {{__("Manage Drivers")}}
                                                 </a>
                                             </li>
                                         @endcan
@@ -341,7 +341,7 @@
                                                         <span class="path1"></span>
                                                         <span class="path2"></span>
                                                     </i>
-                                                    Manage Vehicles
+                                                    {{__("Manage Vehicles")}}
                                                 </a>
                                             </li>
                                         @endcan
@@ -353,7 +353,7 @@
                                                         <span class="path1"></span>
                                                         <span class="path2"></span>
                                                     </i>
-                                                    Business Place
+                                                    {{__("Business Place")}}
                                                 </a>
                                             </li>
                                         @endcan
@@ -371,7 +371,7 @@
                                 <li class="treeview">
                                     <a href="#">
                                         <i data-feather="truck"></i>
-                                        <span>Manage Order</span>
+                                        <span>{{__("Manage Order")}}</span>
                                         <span class="pull-right-container">
                                             <i class="fa fa-angle-right pull-right"></i>
                                         </span>
@@ -383,7 +383,7 @@
                                                     <span class="path1"></span>
                                                     <span class="path2"></span>
                                                 </i>
-                                                Manage Orders
+                                                {{__("Manage Orders")}}
                                             </a>
                                         </li>
                                     </ul>
@@ -393,19 +393,19 @@
                             <li class="@yield('sidebar-report-calendar')">
                                 <a href="{{ route('report-calendar') }}">
                                     <i data-feather="calendar"></i>
-                                   Calendar
+                                   {{__("Calendar")}}
                                 </a>
                             </li>
                             <li class="@yield('sidebar-support')">
                                 <a href="{{ route('home') }}">
                                     <i data-feather="phone-call"></i>
-                                    Support
+                                    {{__("Support")}}
                                 </a>
                             </li>
                             <li class="@yield('sidebar-privacy-policy')">
                                 <a href="{{ route('home') }}">
                                     <i data-feather="lock"></i>
-                                    Data Privacy Policy
+                                    {{__("Data Privacy Policy")}}
                                 </a>
                             </li>
 
@@ -418,7 +418,7 @@
                                     </strong> ©
                                     <script>
                                         document.write(new Date().getFullYear())
-                                    </script> All Rights Reserved
+                                    </script> {{__("All Rights Reserved")}}
                                 </p>
                             </div>
                         </div>
@@ -459,15 +459,15 @@
             <div class="pull-right d-none d-sm-inline-block">
                 <ul class="nav nav-primary nav-dotted nav-dot-separated justify-content-center justify-content-md-end">
                     <li class="nav-item">
-                        <a class="nav-link" href="javascript:void(0)">Home</a>
+                        <a class="nav-link" href="javascript:void(0)">{{__("Home")}}</a>
                     </li>
                 </ul>
             </div>
             &copy;
             <script>
                 document.write(new Date().getFullYear())
-            </script> <a href="{{ config('app.url') }}">{{ config('app.name') }}</a>. All Rights
-            Reserved.
+            </script> <a href="{{ config('app.url') }}">{{ config('app.name') }}</a>. {{__("All Rights
+            Reserved")}}
         </footer>
 
         <!-- Control Sidebar -->
