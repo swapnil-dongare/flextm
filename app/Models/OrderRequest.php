@@ -8,21 +8,23 @@ use App\Models\Driver;
 use App\Models\Equipment;
 use App\Models\Language;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class OrderRequest extends Model
 {
-    use HasFactory,SoftDeletes;
+    use HasFactory, SoftDeletes;
 
     public const REQUEST_TYPE = [
-        "ORDER" => 'Order',
-        "Quote" => 'Quote'
+        "Order" => 'Order',
+        "Quote" => 'Quote',
+        "Cancelled" => 'Cancelled'
     ];
 
     protected $fillable = [
         'request_type',
         'customer_id',
-        'organization_id','tm_id',
+        'organization_id', 'tm_id',
         'start_location', 'start_date', 'start_time', 'present_in_location',
         'end_location', 'end_date', 'end_time', 'present_in_service_hall',
         'head_count', 'mobility_restrictions', 'price', 'tax_rate', 'price_incl_tax',
@@ -53,5 +55,23 @@ class OrderRequest extends Model
     {
         return $this->belongsTo(User::class, 'tm_id');
     }
+    public function setStartDateAttribute($value)
+    {
+        $this->attributes['start_date'] = (new Carbon($value))->format('Y-m-d');
+    }
 
+    public function setEndDateAttribute($value)
+    {
+        $this->attributes['end_date'] = (new Carbon($value))->format('Y-m-d');
+    }
+
+    public function getStartDateAttribute($value)
+    {
+           return (new Carbon($value))->format('d-m-Y');
+    }
+
+    public function getEndDateAttribute($value)
+    {
+       return  (new Carbon($value))->format('d-m-Y');
+    }
 }

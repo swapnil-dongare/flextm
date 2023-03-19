@@ -26,7 +26,7 @@
                                             class="form-control @error('name') is-invalid @enderror" placeholder="{{__('Name')}}">
                                         @error('name')
                                             <span class="invalid-feedback" role="alert">
-                                                <strong>{{ {{__($message)}} }}</strong>
+                                                <strong>{{ __($message) }}</strong>
                                             </span>
                                         @enderror
                                     </div>
@@ -38,7 +38,7 @@
                                             class="form-control @error('email') is-invalid @enderror" placeholder="{{__('E-mail')}}">
                                         @error('email')
                                             <span class="invalid-feedback" role="alert">
-                                                <strong>{{ {{__($message)}} }}</strong>
+                                                <strong>{{ __($message) }}</strong>
                                             </span>
                                         @enderror
                                     </div>
@@ -52,7 +52,7 @@
                                             class="form-control @error('mobile') is-invalid @enderror" placeholder="{{__('Mobile')}}">
                                         @error('mobile')
                                             <span class="invalid-feedback" role="alert">
-                                                <strong>{{ {{__($message)}} }}</strong>
+                                                <strong>{{ __($message) }}</strong>
                                             </span>
                                         @enderror
                                     </div>
@@ -66,7 +66,7 @@
                                             placeholder="{{__('Social Security Number')}}">
                                         @error('social_security_no')
                                             <span class="invalid-feedback" role="alert">
-                                                <strong>{{ {{__($message)}} }}</strong>
+                                                <strong>{{ __($message) }}</strong>
                                             </span>
                                         @enderror
                                     </div>
@@ -78,7 +78,7 @@
                                     placeholder="{{__('Address')}}">{{ old('address') }}</textarea>
                                 @error('address')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ {{__($message)}} }}</strong>
+                                        <strong>{{ __($message) }}</strong>
                                     </span>
                                 @enderror
                             </div>
@@ -90,7 +90,7 @@
                                     class="form-control @error('directive') is-invalid @enderror" placeholder="Directives">
                                 @error('directive')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ {{__($message)}} }}</strong>
+                                        <strong>{{ __($message) }}</strong>
                                     </span>
                                 @enderror
                             </div> --}}
@@ -103,7 +103,7 @@
                                             placeholder="{{__('Licenses Number')}}">
                                         @error('liscense_no')
                                             <span class="invalid-feedback" role="alert">
-                                                <strong>{{ {{__($message)}} }}</strong>
+                                                <strong>{{ __($message) }}</strong>
                                             </span>
                                         @enderror
                                     </div>
@@ -121,7 +121,7 @@
                                                 id="datepicker">
                                             @error('valid_until')
                                                 <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ {{__($message)}} }}</strong>
+                                                    <strong>{{ __($message) }}</strong>
                                                 </span>
                                             @enderror
                                         </div>
@@ -145,7 +145,7 @@
                                         </select>
                                         @error('language_id')
                                             <span class="invalid-feedback" role="alert">
-                                                <strong>{{ {{__($message)}} }}</strong>
+                                                <strong>{{ __($message) }}</strong>
                                             </span>
                                         @enderror
                                     </div>
@@ -166,7 +166,7 @@
                                         </select>
                                         @error('location')
                                             <span class="invalid-feedback" role="alert">
-                                                <strong>{{ {{__($message)}} }}</strong>
+                                                <strong>{{ __($message) }}</strong>
                                             </span>
                                         @enderror
                                     </div>
@@ -185,7 +185,7 @@
                                             <label for="md_checkbox_3">{{__('Expired')}}</label>
                                             @error('expired')
                                                 <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ {{__($message)}} }}</strong>
+                                                    <strong>{{ __($message) }}</strong>
                                                 </span>
                                             @enderror
                                         </div>

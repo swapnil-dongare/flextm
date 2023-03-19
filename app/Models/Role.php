@@ -39,7 +39,7 @@ class Role extends Model
         'list-order-request', 'create-order-request', 'edit-order-request', 'delete-order-request',
 
     ];
-    public const DRIVERPermission = [];
+    public const DRIVERPermission = ['view-calender'];
     public const CUSTOMERPermission = [
         'list-order-request', 'create-order-request', 'edit-order-request', 'delete-order-request',
     ];

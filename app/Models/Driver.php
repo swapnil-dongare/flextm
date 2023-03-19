@@ -6,19 +6,29 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\User;
-
+use Carbon\Carbon;
 
 class Driver extends Model
 {
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
-        'organization_id', 'name', 'mobile', 'email', "address", "liscense_no","location", //"directive",
+        'organization_id', 'name', 'mobile', 'email', "address", "liscense_no", "location", //"directive",
         "valid_until", "social_security_no", "language_id", "profile_url", "expired"
     ];
 
     public function getAdminDetails()
     {
         return $this->belongsTo(User::class, 'tm_id', 'id');
+    }
+
+    public function setValidUntilAttribute($value)
+    {
+        $this->attributes['valid_until'] = (new Carbon($value))->format('Y-m-d');
+    }
+
+    public function getValidUntilAttribute($value)
+    {
+        return  (new Carbon($value))->format('d-m-Y');
     }
 }

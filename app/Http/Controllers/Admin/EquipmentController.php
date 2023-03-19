@@ -74,7 +74,7 @@ class EquipmentController extends Controller
             }
             return redirect()->route('equipment.index')->with("full-top-error", 'Unable to add Equipment');
         } catch (\Exception $th) {
-            return redirect()->route('equipment.index')->with("full-top-error", 'Internal Server error'.$th->getMessage());
+            return redirect()->route('equipment.create')->with("full-top-error", 'Internal Server error'.$th->getMessage());
         }
     }
 

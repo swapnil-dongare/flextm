@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\User;
+use Carbon\Carbon;
 
 class SP extends Model
 {
@@ -36,5 +37,14 @@ class SP extends Model
     public function getAdminDetails()
     {
         return $this->belongsTo(User::class, 'admin_id', 'id');
+    }
+
+    public function setFreeTrialEndDateAttribute($value)
+    {
+        $this->attributes['free_trial_end_date'] = (new Carbon($value))->format('Y-m-d');
+    }
+    public function getFreeTrialEndDateAttribute($value)
+    {
+        return (new Carbon($value))->format('d-m-Y');
     }
 }

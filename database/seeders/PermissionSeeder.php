@@ -22,6 +22,7 @@ class PermissionSeeder extends Seeder
             'list-equipment', 'create-equipment', 'edit-equipment', 'delete-equipment',
             'list-business-place', 'create-business-place', 'edit-business-place', 'delete-business-place',
             'list-order-request', 'create-order-request', 'edit-order-request', 'delete-order-request',
+            'view-calender',
         ];
 
         foreach ($permissions as $key => $value) {

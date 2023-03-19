@@ -24,7 +24,7 @@
                                         <label class="form-label">{{__('Select Customer')}}</label>
                                         <select class="form-control select2  @error('customer_type') is-invalid @enderror"
                                             name="customer_type" id="customer_type" style="width: 100%;">
-                                            <option value="1">{{__('Bussiness')}}</option>
+                                            <option value="1">{{__('Business')}}</option>
                                             <option value="2">{{__('Consumer')}}</option>
                                         </select>
                                         @error('customer_type')
@@ -116,7 +116,11 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group">
+                            <h4 class="box-title text-info mb-0 mt-20"><i class="ti-save me-15"></i>
+                                {{ __('Address') }}
+                            </h4>
+                            <hr class="my-15">
+                            {{-- <div class="form-group">
                                 <label class="form-label">{{__('Address')}}</label>
                                 <textarea rows="3" name="company_address" class="form-control @error('company_address') is-invalid @enderror"
                                     placeholder="{{__('Address')}}">{{ old('company_address') }}</textarea>
@@ -125,7 +129,7 @@
                                         <strong>{{ __($message) }}</strong>
                                     </span>
                                 @enderror
-                            </div>
+                            </div> --}}
                             <div class="form-group">
                                 {{-- <label class="form-label">Post Address</label> --}}
                                 <input type="text" name="company_post_address" value="{{ old('company_post_address') }}"

@@ -135,7 +135,7 @@
                                 <th scope="col">{{__('Price Incl. Tax')}}</th>
                                 <th scope="col">{{__('Invoiced')}}</th>
                                 <th scope="col">{{__('Driver')}}</th>
-                                <th scope="col">{{__('Equipment')}}</th>
+                                <th scope="col">{{__('Vehicle')}}</th>
                                 <th scope="col">{{__('Route')}}</th>
                                 <th scope="col">{{__('Language')}}</th>
                                 <th scope="col">{{__('Other Wishesh')}}</th>
@@ -150,7 +150,7 @@
                                 @foreach ($order as $item)
                                     <tr>
                                         <th scope="row">{{ $sr }}</th>
-                                        <td>{{ $item->request_type == 1 ? "Order" : "Quote" }}</td>
+                                        <td>{{ $item->request_type == 1 ? "Order" : ($item->request_type == 2 ? "Quote" : "Cancelled") }}</td>
                                         <td>{{ $item->start_location }}</td>
                                         <td>{{ $item->start_date }}</td>
                                         <td>{{ $item->start_time }}</td>

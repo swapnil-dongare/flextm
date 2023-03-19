@@ -25,6 +25,7 @@ class CreateDriversTable extends Migration
             $table->date('valid_until')->nullable();
             $table->string('social_security_no')->nullable();
             $table->string('language_id')->nullable()->references('id')->on('languages')->onDelete('cascade')->onUpdate('cascade');
+            $table->string('location')->nullable();
             $table->string('profile_url')->nullable();
             $table->boolean('expired')->default(false);
             $table->softDeletes();

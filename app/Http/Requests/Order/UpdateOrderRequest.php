@@ -29,19 +29,19 @@ class UpdateOrderRequest extends FormRequest
             // 'user_id' => ['required', 'exists:users,id'],
             'start_location' => ['required', 'string'],
             'start_date' => ['required', 'date'],
-            'start_time' => ['required', 'string', 'date_format:H:i:s'],
+            'start_time' => ['required', 'string', 'date_format:H:i'],
             'present_in_location' => [
                 'required',
                 'string',
-                'date_format:H:i:s',
+                'date_format:H:i',
             ],
             'end_location' => ['required', 'string'],
             'end_date' => ['required', 'date'],
-            'end_time' => ['required', 'string', 'date_format:H:i:s'],
+            'end_time' => ['required', 'string', 'date_format:H:i'],
             'present_in_service_hall' => [
                 'nullable',
                 'string',
-                'date_format:H:i:s',
+                'date_format:H:i',
             ],
             'head_count' => ['required', 'integer'],
             'mobility_restrictions' => ['nullable'],
@@ -54,6 +54,15 @@ class UpdateOrderRequest extends FormRequest
             'route' => ['required', 'string'],
             'language_id' => ['required', 'exists:languages,id'],
             'other_wishes' => ['required', 'string'],
+        ];
+    }
+    public function messages()
+    {
+        return[
+            "driver_id.required"=>"Please select the driver",
+            "equipment_id.required"=>"Please select the Vehicle",
+            "language_id.required"=>"Please select the language",
+            "customer_id.required"=>"Please select the Customer",
         ];
     }
 }

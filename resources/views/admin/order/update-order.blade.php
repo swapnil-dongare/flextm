@@ -84,8 +84,8 @@
                                         <select class="selectpicker  @error('request_type') is-invalid @enderror"
                                             name="request_type">
                                             <option value="2"> {{__('Quote')}}</option>
-                                            <option value="1" {{ $order->request_type == 1 ? 'selected' : '' }}> {{__('Order')}}
-                                            </option>
+                                            <option value="1" {{ $order->request_type == 1 ? 'selected' : '' }}> {{__('Order')}}</option>
+                                            <option value="3" {{old('request_type') == 3 ? 'selected' : ''}}>{{__("Cancelled")}}</option>
                                         </select>
                                         @error('request_type')
                                             <span class="invalid-feedback" role="alert">
@@ -177,7 +177,7 @@
                                                     <input type="text" value="{{ $order->start_time }}"
                                                         name="start_time"
                                                         class="form-control @error('start_time') is-invalid @enderror"
-                                                        placeholder="00:00:00">
+                                                        placeholder="00:00" id="StartTimePicker">
                                                     @error('start_time')
                                                         <span class="invalid-feedback" role="alert">
                                                             <strong>{{ __($message) }}</strong>
@@ -196,7 +196,7 @@
                                             <input type="text" name="present_in_location"
                                                 value="{{ $order->present_in_location }}"
                                                 class="form-control @error('present_in_location') is-invalid @enderror"
-                                                placeholder="00:00:00">
+                                                placeholder="00:00" id="presetInLocTimePicker">
                                             @error('present_in_location')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ __($message) }}</strong>
@@ -262,7 +262,7 @@
                                                         </div>
                                                     </div> --}}
                                                     <input type="text" value="{{ $order->end_time }}" name="end_time"
-                                                        id="" placeholder="00:00:00"
+                                                        id="endTimePicker" placeholder="00:00"
                                                         class="form-control @error('end_time') is-invalid @enderror">
                                                     <!-- /.input group -->
                                                     @error('end_time')
@@ -344,7 +344,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label class="form-label">{{__("Price")}} $ (0%)</label>
+                                        <label class="form-label">{{__("Price")}} (0%)</label>
                                         <input type="text" name="price" value="{{ $order->price }}" id="priceInput"
                                             class="form-control priceCal @error('price') is-invalid @enderror"
                                             placeholder="Price">
@@ -357,7 +357,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label class="form-label">{{__("Price")}} $ (Inc.tax%)</label>
+                                        <label class="form-label">{{__("Price")}} € (Inc.tax%)</label>
                                         <input type="text" name="price_incl_tax" value="{{ $order->price_incl_tax }}" id="priceIncTax" readonly
                                             class="form-control @error('price_incl_tax') is-invalid @enderror"
                                             placeholder="{{__('Price')}}">
@@ -481,9 +481,9 @@
                         </div>
                         <!-- /.box-body -->
                         <div class="box-footer">
-                            <a href="{{ route('order-request.index') }}" class="btn btn-warning me-1">
-                                <i class="ti-trash"></i> {{__('Cancel')}}
-                            </a>
+                            <button type="reset" class="btn btn-warning me-1">
+                                <i class="ti-trash"></i> {{ __('Cancel') }}
+                            </button>
                             <button type="submit" class="btn btn-primary">
                                 <i class="ti-save-alt"></i> {{__('Update')}}
                             </button>
@@ -524,6 +524,20 @@
             //     format: 'dd-mm-yyyy',
             //     startDate: '-3d'
             // });
+
+            $('#StartTimePicker , #presetInLocTimePicker , #endTimePicker').daterangepicker({
+                timePicker: true,
+                timePicker24Hour: true,
+                timePickerIncrement: 1,
+                timePickerSeconds: false,
+                singleDatePicker: true,
+                locale: {
+                    format: 'HH:mm'
+                }
+            }).on('show.daterangepicker', function(ev, picker) {
+                picker.container.find(".calendar-table").hide();
+            });
+
             $(".priceCal").on("change", function() {
                 var priceIncTax = $("#priceIncTax");
                 var priceInput = Number($("#priceInput").val());
